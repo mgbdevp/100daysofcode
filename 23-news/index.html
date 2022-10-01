@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>News</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main>
+		<div class="header">
+			<h2>News</h2>
+		</div>
+		<div class="search-box">
+			<input type="text" id="query" placeholder="Search for news...">
+			<button onclick="newsUrl = `https://gnews.io/api/v4/search?q=${document.getElementById('query').value}&lang=en&token=8d503ef8e19d7f26fd275a132f129202`;getNews()">Get</button>
+		</div>
+		<div class="content"></div>
+		<div class="footer">
+			<footer>
+				<p>&copy 2022 magabee & gnews.io</p>
+				<p>sources indicated</p>
+			</footer>
+		</div>
+	</main>
+<script src="script.js"></script>
+</body>
+</html>

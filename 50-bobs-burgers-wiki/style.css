@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*{
+	box-sizing: border-box;
+}
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+a{
+	text-decoration: none;
+	color: rgb(255, 152, 0);
+}
+
+.header{
+	background-color: rgb(255, 255, 255);
+	color: rgb(32, 35, 40);
+	text-align: center;
+}
+
+.header h1{
+	margin: 2rem 0;
+}
+
+.content{
+	background-color: rgb(34, 36, 42);
+	color: #eee;
+	padding: 2rem;
+}
+
+#wiki{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.content .card{
+	background-color: rgb(50, 52, 54);
+	border-radius: 8px;
+	display: flex;
+	height: 200px;
+	width: 480px;
+	margin: 12px;
+}
+
+.card img{
+	border-radius: 8px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.card .right{
+	display: flex;
+	flex-direction: column;
+	padding: 6px 12px;
+}
+
+.right h3{
+	margin: 4px 0;
+}
+
+p{
+	margin: 0;
+}
+
+h3:hover{
+	color: rgb(255, 152, 0);
+}
+
+span{
+	margin-top: 0.5rem;
+}
+
+footer{
+	background-color: rgb(28, 30, 34);
+	color: #eee;
+	padding: 1rem;
+	text-align: center;
+}
+
+p, span{
+	font-size: 14px;
+}
+
+span{
+	color: #bbb;
+}
+
+footer p{
+	font-size: 14px;
+}
+
+@media only screen and (max-width: 700px){
+	.card{
+		display: block !important;
+		height: 400px !important;
+		width: 200px !important;
+	}
+
+	img{
+		width: 200px !important;
+		border-radius: 6px !important;
+		border-bottom-left-radius: 0 !important;
+		border-bottom-right-radius: 0 !important;
+	}
+}
+
+#pg{
+	text-align: center;
+	margin-top: 1rem;
+}
+
+button{
+	background-color: rgb(50, 52, 54);
+	color: inherit;
+	padding: 8px 14px;
+	outline: none;
+	border: none;
+	font-family: inherit;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.card p{
+	margin: 2px 0;
+}

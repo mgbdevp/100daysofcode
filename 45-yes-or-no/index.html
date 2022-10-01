@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Yes or No</title>
+	<style type="text/css">
+		body{background-color: #121212;color: #ddd;text-align: center;font-family: sans-serif;}
+		#c-box{margin: 2rem;text-align: center;}
+		button{background-color: #27ae60;color: inherit;font-family: inherit;padding: 10px;border: none;outline: none;font-size: 18px;border-radius: 4px;box-sizing: border-box;display: block;margin: 1rem auto;transition: .2s; border: 2px solid transparent;}
+		button:hover{background-color: transparent;border: 2px solid #444;}
+		img{max-width: 100%;}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Yes or No</h1>
+		</header>
+		<div id="controls">
+			<button onclick="g()">SELECT FOR ME</button>
+		</div>
+		<div id="c-box"></div>
+		<footer>
+			<p>MAGABEE | YESNO.WTF 2022</p>
+		</footer>
+	</main>
+<script>
+	const cb = document.getElementById('c-box');
+
+	function g(){
+		cb.innerHTML = '';
+		fetch('https://yesno.wtf/api')
+		.then(res => res.json())
+		.then(d => {
+			const answer = document.createElement('h1');
+			answer.style.fontSize = '48px';
+			const img = document.createElement('img');
+
+			answer.innerHTML = d.answer.toUpperCase();
+			img.src = d.image;
+
+			cb.append(answer, img);
+		});
+	}
+</script>
+</body>
+</html>

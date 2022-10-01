@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lorem Picsum</title>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+	<style>
+		body{margin: 0;font-family: 'Rubik', sans-serif;background-color: #121212;color: #ddd;text-align: center;}
+		#controls{display: inline-grid;grid-template-columns: auto auto auto;grid-gap: 4px;}
+		input, button{width: 100px;outline: none;background-color: #181818;color: inherit;padding: 6px 8px;border: 1px solid #555;}
+		#img-box{width: 100%;margin: 1rem auto;}
+		img{max-width: 100%;}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h2>Lorem Picsum</h2>
+			<p>Generate random images</p>
+		</header>
+		<div id="controls">
+			<small>WIDTH</small>
+			<small>HEIGHT</small>
+			<small></small>
+			<input type="numbber" id="w" placeholder="1280">
+			<input type="numbber" id="h" placeholder="720">
+			<button onclick="generateImage()">Generate</button>
+		</div>
+		<div id="img-box">
+			<small id="status"></small>
+		</div>
+	</main>
+<script>
+	console.log('%cMAGABEE & PICSUM.PHOTO @2022 | IMAGES FROM UNSPLASH', 'background: #111; color: #bada55; font-size: 16px; padding: 8px');
+	const box = document.getElementById('img-box');
+	const status = document.getElementById('status');
+	
+	function generateImage(){
+		if(box.getElementsByTagName('img')[0] != undefined) box.getElementsByTagName('img')[0].remove();
+		const w = document.getElementById('w').value;
+		const h = document.getElementById('h').value;
+		if(w != '' & h != ''){
+			status.innerHTML = '';
+			const img = document.createElement('img');
+			img.src = `https://picsum.photos/${w}/${h}`;
+			box.appendChild(img);
+		}
+		else{
+			status.innerHTML = 'Please enter a number';
+		}
+	}
+</script>
+</body>
+</html>

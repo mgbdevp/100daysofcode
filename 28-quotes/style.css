@@ -1,0 +1,22 @@
+body{
+	background-color: rgb(230, 230, 230);
+	color: #000;
+	font-family: 'Tiro Bangla', serif;
+	text-align: center;
+	-webkit-tap-highlight-color: transparent;
+}
+
+#content{
+	margin: 1.5rem;
+	font-style: italic;
+}
+
+p{
+	font-family: sans-serif;
+	font-style: normal;
+}
+
+h2{
+	border: 2px dashed darkgoldenrod;
+	padding: 10px ;
+}

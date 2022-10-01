@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Translate.me</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Translate.me</h1>
+			<p>Free translate service. Supporting 30 languages</p>
+		</header>
+		<div id="controls">
+			<select id="src">
+				<option value="en">English</option>
+				<option value="ar">Arabic</option>
+				<option value="az">Azerbaijani</option>
+				<option value="zh">Chinese</option>
+				<option value="cs">Czech</option>
+				<option value="da">Danish</option>
+				<option value="nl">Dutch</option>
+				<option value="es">Esperanto</option>
+				<option value="fi">Finnish</option>
+				<option value="fr">French</option>
+				<option value="de">German</option>
+				<option value="el">Greek</option>
+				<option value="he">Hebrew</option>
+				<option value="hi">Hindi</option>
+				<option value="hu">Hungarian</option>
+				<option value="id">Indonesian</option>
+				<option value="ga">Irish</option>
+				<option value="it">Italian</option>
+				<option value="ja">Japanese</option>
+				<option value="ko">Korean</option>
+				<option value="fa">Persian</option>
+				<option value="pl">Polish</option>
+				<option value="pt">Portuguese</option>
+				<option value="ru">Russian</option>
+				<option value="sk">Slovak</option>
+				<option value="es">Spanish</option>
+				<option value="sv">Swedish</option>
+				<option value="tr" selected>Turkish</option>
+				<option value="uk">Ukranian</option>
+				<option value="vi">Vietnamese</option>
+			</select>
+				to
+			<select id="trg">
+				<option value="en" selected>English</option>
+				<option value="ar">Arabic</option>
+				<option value="az">Azerbaijani</option>
+				<option value="zh">Chinese</option>
+				<option value="cs">Czech</option>
+				<option value="da">Danish</option>
+				<option value="nl">Dutch</option>
+				<option value="es">Esperanto</option>
+				<option value="fi">Finnish</option>
+				<option value="fr">French</option>
+				<option value="de">German</option>
+				<option value="el">Greek</option>
+				<option value="he">Hebrew</option>
+				<option value="hi">Hindi</option>
+				<option value="hu">Hungarian</option>
+				<option value="id">Indonesian</option>
+				<option value="ga">Irish</option>
+				<option value="it">Italian</option>
+				<option value="ja">Japanese</option>
+				<option value="ko">Korean</option>
+				<option value="fa">Persian</option>
+				<option value="pl">Polish</option>
+				<option value="pt">Portuguese</option>
+				<option value="ru">Russian</option>
+				<option value="sk">Slovak</option>
+				<option value="es">Spanish</option>
+				<option value="sv">Swedish</option>
+				<option value="tr">Turkish</option>
+				<option value="uk">Ukranian</option>
+				<option value="vi">Vietnamese</option>
+			</select>
+		</div>
+		<div id="content">
+			<textarea id="toTranslate" placeholder="Text to translate"></textarea>
+			<textarea id="translated" readonly placeholder="Translated text"></textarea>
+			<button onclick="submit()">Translate</button>
+		</div>
+		<footer>
+			<hr>
+			<p><a href="http://magabee.rf.gd">MAGABEE</a> &copy 2022 All rights reserved</p>
+			<p>Thanks to <a href="https://libretranslate.com">LIBRETRANSLATE API</a> for bad translation</p>
+		</footer>
+	</main>
+
+<script src="script.js"></script>
+</body>
+</html>

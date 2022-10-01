@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta title="viewport" content="width=device-width, initial-scale=1">
+	<title>Phone Validation</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+		body{background-color: #161616;color: #ddd;font-family: 'Open Sans', sans-serif;}
+		main{text-align: center;}
+		header, footer{padding: 1rem 0;}
+		input, button{font-family: inherit;background-color: #282828;color: inherit;padding: 10px 16px;border: none;outline: none;font-size: 16px;}
+		span{padding-right: 0;}
+		button{background-color: #3467eb;transition: .2s ease;cursor: pointer;}
+		button:hover{transform: translateX(4px);}
+		#content{min-height: 50vh;width: 70%;margin: 1rem auto;background-color: transparent;padding: 1rem;border-radius: 10px;}
+		@media only screen and (max-width: 700px){#content{width: 90%}}
+		h3, p{margin: 10px 0;}
+		p{font-size: 15px;}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Phone Validation</h1>
+			<p>Validate phone numbers over 190 countries. Detect fake numbers</p>
+		</header>
+		<div id="search-box">
+			<input type="text" id="num" placeholder="Number (without +)" style="width: 300px">
+			<button onclick="getInfo()">Get</button>
+		</div>
+		<div id="content"></div>
+		<footer>
+			<p>magabee & abstractapi.com &copy 2022</p>
+		</footer>
+	</main>
+<script>
+	const content = document.getElementById('content');
+
+	function getInfo(){
+		content.style.backgroundColor = '#080808';
+		content.innerHTML = '';
+;		const num = document.getElementById('num').value;
+		fetch('https://phonevalidation.abstractapi.com/v1/?api_key=83cbc2fb75914577b236c290d66f99b0&phone=' + num)
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			const status = document.createElement('p');
+			content.appendChild(status);
+			if(data.valid == true){
+				const num = document.createElement('h3');
+				const loccar = document.createElement('h3');
+				const prefix = document.createElement('p');
+				const local = document.createElement('p');
+
+				num.innerHTML = data.format.international;
+				loccar.innerHTML = data.location + ', ' + data.carrier;
+				prefix.innerHTML = 'Prefix: ' + data.country.prefix;
+				local.innerHTML = 'Local: ' + data.format.local;
+
+				content.append(num, loccar, prefix, local);
+			}
+			else{
+				status.innerHTML = 'Invalid number ';
+			}
+		});
+	}
+</script>
+</body>
+</html>

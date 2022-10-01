@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Random Word Generator</title>
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main>
+		<header>
+			<h2>Random Word Generator</h2>
+			<p>Generate random english words with definiton</p>
+		</header>
+		<div id="controls">
+			<button onclick="gn()">Generate</button>
+		</div>
+		<div id="content"></div>
+		<footer>
+			<p><a href="http://magabee.rf.gd">MAGABEE</a> | <a href="https://random-words-api.vercel.app/word">API</a> &copy 2022</p>
+		</footer>
+	</main>
+<script>
+	const cnt = document.getElementById('content');
+	function gn(){
+		cnt.innerHTML = '';
+		fetch('https://random-words-api.vercel.app/word')
+		.then(r => r.json())
+		.then(d => {
+			const wrd = document.createElement('h2');
+			const prnc = document.createElement('small');
+			const def = document.createElement('p');
+
+			def.id = 'def';
+
+			wrd.innerHTML = d[0].word;
+			prnc.innerHTML = '[' + d[0].pronunciation + ']';
+			def.innerHTML = 'Definiton: ' + d[0].definition;
+
+			cnt.append(wrd, prnc, def);
+		});
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>NameAvatar - Pixel Avatar Generator</title>
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<main>
+		<header>
+			<h1>NameAvatar</h1>
+			<p>Pixel avatar generator</p>
+			<hr>
+		</header>
+		<div id="content">
+			<div id="search-box">
+				<small>Enter text to convert to avatar</small>
+				<input type="text" id="txt" placeholder="Lorem">
+				<select id="type">
+					<option value="adventurer" selected>adventurer</option>
+					<option value="adventurer-neutral">adventurer-neutral</option>
+					<option value="avataaars">avataaars</option>
+					<option value="big-ears">big-ears</option>
+					<option value="big-ears-neutral">big-ears-neutral</option>
+					<option value="big-smile">big-smile</option>
+					<option value="bottts">bottts</option>
+					<option value="croodles">croodles</option>
+					<option value="croodles-neutral">croodles-neutral</option>
+					<option value="identicon">identicon</option>
+					<option value="initials">initials</option>
+					<option value="micah">micah</option>
+					<option value="miniavs">miniavs</option>
+					<option value="open-peeps">open-peeps</option>
+					<option value="personas">personas</option>
+					<option value="pixel-art">pixel-art</option>
+					<option value="pixel-art-neutral">pixel-art-neutral</option>
+				</select>
+				<button onclick="getPixelated()">Get</button>
+			</div>
+			<div id="content-box"></div>
+		</div>
+		<footer>
+			<hr>
+			<p><a href="http://magabee.rf.gd">MAGABEE</a> &copy 2022</p>
+			<p>Data: <a href="https://dicebear.com">Dicebear</a></p>
+		</footer>
+	</main>
+
+<script src="script.js"></script>
+</body>
+</html>

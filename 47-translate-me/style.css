@@ -1,0 +1,94 @@
+::-webkit-scrollbar{
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+	background-color: rgb(60, 66, 72);
+	border-radius: 4px;
+}
+
+body{
+	background-color: rgb(26, 28, 30);
+	color: #ecf0f1;
+	font-family: 'Open Sans', sans-serif;
+}
+
+main{
+	text-align: center;
+}
+
+#content{
+	min-height: 55vh;
+}
+
+footer{
+	position: absolute;
+	bottom: 10px;
+	left: 0;
+	right: 0;
+}
+
+footer p{
+	font-size: 14px;
+}
+
+hr{
+	border: none;
+	height: 1px;
+	background-color: #bbb;
+	width: 70%;
+}
+
+a{
+	text-decoration: none;
+	text-underline-position: under;
+	color: #2980b9;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+select, textarea, button{
+	background-color: inherit;
+	color: inherit;
+	outline: none;
+	padding: 8px 16px;
+	font-family: inherit;
+	font-size: 16px;
+	border: 2px solid #2980b9;
+	margin: 8px;
+	resize: none;
+}
+
+button{
+	display: block;
+	width: 200px;
+	margin: 0 auto;
+	background-color: #27ae60;
+	border: none;
+	cursor: pointer;
+}
+
+button:hover{
+	background-color: #2ecc71;
+}
+
+option{
+	color: rgb(26, 28, 30);
+}
+
+textarea{
+	width: 340px;
+	height: 180px;
+}
+
+@media only screen and (max-width: 720px){
+	textarea{
+		box-sizing: border-box;
+		width: 100%;
+	}
+	footer{
+		position: static;
+	}
+}

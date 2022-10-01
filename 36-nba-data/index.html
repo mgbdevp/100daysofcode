@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>NBA Data</title>
+	<link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<div>
+				<h2>NBA Data</h2>
+			</div>
+		</div>
+		<div class="content">
+
+			<h3>All players</h3>
+			<p id="including"></p>
+			<table id="t">
+				<th>Name</th>
+				<th>Height</th>
+				<th>Weight</th>
+				<th>Position</th>
+				<th>Team</th>
+			</table>
+
+		</div>
+		<div id="controls">
+			<button onclick="pg--;url = 'https://www.balldontlie.io/api/v1/players?per_page=100&page=' + pg;nb()"><<</button>
+			<button onclick="pg++;url = 'https://www.balldontlie.io/api/v1/players?per_page=100&page=' + pg;nb()">>></button>
+		</div>
+		<footer id="footer">
+			<p>magabee &copy2022</p>
+			<p>data: balldontlie.io</p>
+		</footer>
+	</main>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

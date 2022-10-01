@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Telegram Bot Archive</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+		body{background-color: #161616;color: #ddd;font-family: 'Open Sans', sans-serif;}
+		main{text-align: center;}
+		header, footer{padding: 1rem 0;}
+		span,input, button{font-family: inherit;background-color: #282828;color: inherit;padding: 10px 16px;border: none;outline: none;font-size: 16px;}
+		span{padding-right: 0;}
+		button{background-color: #3467eb;transition: .2s ease;cursor: pointer;}
+		button:hover{transform: translateX(4px);}
+		#content{min-height: 56vh;width: 70%;margin: 1rem auto;background-color: #080808;padding: 1rem;border-radius: 10px;}
+		@media only screen and (max-width: 700px){#content{width: 90%}}
+		h3, p{margin: 6px 0;}
+		p{font-size: 15px;font-weight: 500;}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Telegram Bot Archive</h1>
+			<p>Archive of telegram bots</p>
+		</header>
+		<div id="search-box">
+			<span>@</span><input type="text" id="bot_name" placeholder="username">
+			<button onclick="getBotInfo()">Get</button>
+		</div>
+		<div id="content"></div>
+		<footer>
+			<p>magabee & botsarchive.com &copy 2022</p>
+		</footer>
+	</main>
+<script>
+	const content = document.getElementById('content');
+
+	function getBotInfo(){
+		content.innerHTML = '';
+;		const BN = document.getElementById('bot_name').value;
+		fetch('https://api.botsarchive.com/getBotID.php?username=@' + BN)
+		.then(res => res.json())
+		.then(data => {
+			const status = document.createElement('p');
+			content.appendChild(status);
+			if(data.ok == 1){
+				const name = document.createElement('h3');
+				const username = document.createElement('h4');
+				const description = document.createElement('p');
+				const category = document.createElement('p');
+				const tags = document.createElement('p');
+				const languages = document.createElement('p');
+				const stars = document.createElement('p');
+				const vote = document.createElement('p');
+
+				name.innerHTML = data.result.name;
+				username.innerHTML = data.result.username;
+				description.innerHTML = data.result.description;
+				category.innerHTML = 'Category: ' + data.result.category;
+				tags.innerHTML = 'Tags: ' + data.result.tags;
+				languages.innerHTML = '🌐 ' + data.result.languages;
+				stars.innerHTML = '⭐ ' + data.result.stars;
+				vote.innerHTML = '👍 ' + data.result.vote + ` (${data.result.votes})`;
+
+				content.append(name, username, description, category, tags, languages, stars, vote);
+			}
+			else{
+				status.innerHTML = 'Bot not found';
+			}
+		});
+	}
+</script>
+</body>
+</html>

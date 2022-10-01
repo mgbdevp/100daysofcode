@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bob's Burgers Wiki</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main>
+		<div class="header">
+			<h1>Bob's Burgers Wiki</h1>
+		</div>
+		<div class="content">
+			<div id="wiki"></div>
+			<div id="pg">
+				<button onclick="skip = skip - 20;getContent();url = `https://bobsburgers-api.herokuapp.com/characters/?limit=20&skip=${skip}`" title="Previous page">❮</button>
+				<button onclick="skip = skip + 20;getContent();url = `https://bobsburgers-api.herokuapp.com/characters/?limit=20&skip=${skip}`" title="Next page">❯</button>
+			</div>
+		</div>
+		</div>
+		<footer>
+			<p>❮❯ by MAGABEE &copy 2022</p>
+			<p>Data: <a href="https://bobs-burgers-api-ui.herokuapp.com/">bobs-burgers-api-ui</a></p>
+		</footer>
+	</main>
+<script src="script.js"></script>
+</body>
+</html>

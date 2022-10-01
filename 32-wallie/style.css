@@ -1,0 +1,105 @@
+body{
+	margin: 0;
+	background-color: rgb(26, 28, 29);
+	color: #eee;
+	font-family: 'Rubik', sans-serif;
+	-webkit-tap-highlight-color: transparent;
+}
+
+header, footer{
+	background-color: rgb(20, 21, 22);
+	width: 100%;
+	padding: 1rem 2rem;
+	box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+	box-sizing: border-box;
+}
+
+h2{
+	margin: 4px 0;
+}
+
+footer{
+	text-align: center;
+}
+
+h1{
+	font-weight: normal;
+}
+
+a{
+	color: inherit;
+	transition: .1s;
+	text-decoration-color: #27ae60;
+	text-underline-position: under;
+}
+
+a:hover{
+	color: #27ae60 !important;
+}
+
+#content{
+	width: 85%;
+	margin: 1.5rem auto;
+	text-align: center;
+}
+
+#wall-box{
+	margin: 1rem 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.card{
+	margin: 12px;
+	position: relative;
+}
+
+.card img{
+	width: 320px;
+	max-width: 320px;
+}
+
+.material-icons-outlined{
+	font-size: 16px !important;
+}
+
+.overlay{
+	box-sizing: border-box;
+	position: absolute; 
+	bottom: 0; 
+	background: rgba(0, 0, 0, 0.7);
+	width: 100%;
+	transition: .3s ease;
+	opacity:0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+}
+
+.card:hover .overlay{
+	opacity: 1;
+}
+
+.overlay p{
+	margin: 0;
+	margin-right: 2rem;
+}
+
+.overlay a, button{
+	text-decoration: none;
+	padding: 10px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 6px;
+	margin: 0 6px;
+	color: inherit;
+	cursor: pointer;
+	transition: .2s ease;
+	border: none;
+	outline: none;
+}
+
+button:hover{
+	background-color: rgba(0, 0, 0, 0.7);
+}

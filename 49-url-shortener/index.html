@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Url Shortener</title>
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body{background-color: rgb(26, 30, 34);color: #eee;font-family: 'Nanum Gothic', sans-serif;text-align: center;}
+		main{margin: 2rem 0;}
+		a{background-color: #2F8F9D;color: inherit;font-family: inherit;font-size: 18px;outline: none;padding: 10px 14px;border: none;border-radius: 8px;transition: 0.2s;box-sizing: border-box;box-shadow: 0 5px 10px #141414;font-weight: normal;text-decoration: none;display: block;width: 222px;margin: 1rem auto;}
+		a:hover{background-color: #3BACB6;}
+		p{font-size: 14px;}
+		#content{min-height: 70vh;margin-top: 2rem;}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Url Shortener</h1>
+			<p>Free URL Shortener Service. 3 server available</p>
+		</header>
+
+		<div id="content">
+			<p>Servers </p>
+			<a href="1pt">1PT.CO (SLOW)</a>
+			<a href="gotiny">GOTINY.CC (FAST)</a>
+			<a href="9qr">9QR.DE (FAST)</a>
+		</div>
+		<footer>
+			<p>MAGABEE &copy 2022</p>
+		</footer>
+	</main>
+<script>
+const c = document.getElementById('content');
+const status = document.getElementById('status');
+
+function shorten(){
+	c.innerHTML = '<h2>Please wait... </h2>';
+	const long_url = document.getElementById('long_url').value;
+	if(!long_url.startsWith('http')) c.innerHTML = '<h2>Invalid URL</h2>';
+	else{
+		fetch('https://gotiny.cc/api', {
+			method: 'POST',
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({input: long_url})
+		})
+		.then(res => res.json())
+		.then(d => {
+			c.innerHTML = '';
+			
+			console.log(d);
+
+			const inf = document.createElement('p');
+			const url = document.createElement('h2');
+			const cpbtn = document.createElement('button');
+
+			cpbtn.style.fontSize = '16px';
+			cpbtn.style.padding = '5px 8px';
+
+			inf.innerHTML = 'Your shortened url: ';
+			url.innerHTML = `<a id='cp' href='https://gotiny.cc/${d[0].code}'>https://gotiny.cc/${d[0].code}</a>`;
+			cpbtn.innerHTML = 'Copy';
+
+			cpbtn.addEventListener('click', () => {
+				cpbtn.innerHTML = 'Copied';
+				navigator.clipboard.writeText(document.getElementById('cp').href);
+			});
+
+			c.append(inf, url, cpbtn);
+		});			
+	}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+body{
+	background-color: #141414;
+	color: #eee;
+	font-family: Segoe UI, sans-serif;
+	text-align: center;
+}
+
+textarea, input{
+	display: block;
+	font-family: inherit;
+	background-color: #181818;
+	color: inherit;
+	outline: none;
+	border-radius: 6px;
+	resize: none;
+	margin: 12px auto;
+	padding: 8px 16px;
+}
+
+textarea{
+	width: 60%;
+	height: 250px;
+}
+
+input{
+	width: 200px;
+	background-color: #27ae60;
+	border: none;
+}
+
+@media only screen and (max-width: 768px){
+	textarea{
+		width: 90%;
+	}
+}

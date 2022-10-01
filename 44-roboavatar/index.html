@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>RoboAvatar</title>
+	<style type="text/css">
+		body{background-color: #121212;color: #ddd;text-align: center;font-family: sans-serif;}
+		#c-box{margin: 2rem;}
+		input, button{background-color: #27ae60;color: inherit;font-family: inherit;padding: 10px;border: none;outline: none;font-size: 18px;border-radius: 4px;box-sizing: border-box;}
+		input{background-color: transparent;border: 2px solid #444;}
+		button{display: block;margin: 1rem auto;transition: .2s; border: 2px solid transparent;}
+		button:hover{background-color: transparent;border: 2px solid #444;}
+		#guide{display: grid;grid-template-columns: auto auto auto auto;justify-content: center;}
+		#guide img{width: 100px;}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>RoboAvatar</h1>
+			<p>Generate robot images by given text</p>
+		</header>
+		<div id="controls">
+			<input type="text" id="tx" placeholder="text">
+			<input type="number" id="set" placeholder="set">
+			<button onclick="g()">Generate!</button>
+		</div>
+		<p style="text-align: center;">Guide</p>
+		<div id="guide">
+			<p>Set 1</p>
+			<p>Set 2</p>
+			<p>Set 3</p>
+			<p>Set 4</p>
+			<img src="https://robohash.org/ZCP.png?set=set1&size=150x150">
+			<img src="https://robohash.org/ROC.png?set=set2&size=150x150">
+			<img src="https://robohash.org/K24.png?set=set3&size=150x150">
+			<img src="https://robohash.org/BX4.png?set=set4&size=150x150">
+		</div>
+		<div id="c-box"></div>
+		<footer>
+			<p>MAGABEE | ROBOHASH.ORG 2022</p>
+		</footer>
+	</main>
+<script>
+	const cb = document.getElementById('c-box');
+
+	function g(){
+		if(document.getElementById('guide') != undefined) document.getElementById('guide').remove();
+		cb.innerHTML = '';
+		const tx = document.getElementById('tx').value;
+		const set = document.getElementById('set').value;		
+		const dtdv = document.createElement('div');
+		cb.appendChild(dtdv);
+		const img = document.createElement('img');
+		img.src = `https://robohash.org/${tx}?set=set${set}`;
+		dtdv.appendChild(img);
+	}
+</script>
+</body>
+</html>

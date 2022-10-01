@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta title="viewport" content="width=device-width, initial-scale=1">
+	<title>WebSite Scraper</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+		body{background-color: #161616;color: #ddd;font-family: 'Open Sans', sans-serif;}
+		main{text-align: center;}
+		header, footer{padding: 1rem 0;}
+		input, button{font-family: inherit;background-color: #282828;color: inherit;padding: 10px 16px;border: none;outline: none;font-size: 16px;}
+		span{padding-right: 0;}
+		button{background-color: #3467eb;transition: .2s ease;cursor: pointer;}
+		button:hover{transform: translateX(4px);}
+		#content{background-color: transparent;text-align: left;width: 90%;margin: 1rem auto;}
+		@media only screen and (max-width: 700px){#content{width: 90%}}
+		h3, p{margin: 10px 0;}
+		p{font-size: 15px;}
+		pre{overflow: hidden;}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Website Scraper</h1>
+			<p>Scrape websites. get HTML content</p>
+		</header>
+		<div id="search-box">
+			<input type="text" id="url" placeholder="URL" style="width: 300px">
+			<button onclick="getInfo()">Get</button>
+		</div>
+		<div id="content"></div>
+		<footer>
+			<p>magabee & abstractapi.com &copy 2022</p>
+		</footer>
+	</main>
+<script>
+	const content = document.getElementById('content');
+
+	function getInfo(){
+		content.style.backgroundColor = '#080808';
+		content.innerHTML = '';
+;		const url = document.getElementById('url').value;
+		fetch('https://scrape.abstractapi.com/v1/?api_key=ed6109ef2f28472295633145882e08d6&render_js=true&url=' + url)
+		.then(res => res.text())
+		.then(data => {
+			console.log(data);
+			const htmlcontent = document.createElement('pre');
+			htmlcontent.innerHTML = data.replaceAll('<', '&lt').replaceAll('>', '&gt');
+			content.appendChild(htmlcontent);
+		});
+	}
+</script>
+</body>
+</html>

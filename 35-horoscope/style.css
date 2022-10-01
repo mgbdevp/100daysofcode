@@ -1,0 +1,101 @@
+body{
+	background-color: #101317;
+	color: #e5e5e5;
+	margin: 0;
+	font-family: 'Quicksand', sans-serif;
+	text-align: center;
+}
+
+header, footer{
+	margin: 2rem 0;
+	text-align: center;
+}
+
+small{
+	display: block;
+	padding: 8px 0;
+}
+
+#search-box{
+	text-align: center;
+}
+
+footer p{
+	font-size: 14px;
+}
+
+a{
+	text-decoration-color: #27ae60;
+	text-underline-position: under;
+	color: inherit;
+	transition: .2s;
+}
+
+a:hover{
+	color: #27ae60;
+}
+
+input, button{
+	font-family: inherit;
+	font-size: 16px;
+	background-color: #13191c;
+	color: inherit;
+	border: 1px solid #444;
+	padding: 0.5rem 1rem;
+	outline: none;
+	transition: .2s;
+	box-sizing: border-box;
+}
+
+input{
+	width: 260px;
+}
+
+button{
+	background-color: #2980b9;
+	cursor: pointer;
+	border: 1px solid #3498db;
+}
+
+button:hover{
+	background-color: #3498db;
+}
+
+
+#horoscope-box{
+	width: 700px;
+	margin: 0 auto;
+	min-height: 360px;
+}
+
+hr{
+	width: 70%;
+	border: none;
+	height: 1px;
+	background-color: #888;
+}
+
+@media only screen and (max-width: 700px){
+	input, button{
+		display: block;
+		width: 90%;
+		margin: 0 auto;
+	}
+	#horoscope-box{
+		width: 90%;
+	}
+}
+
+#desc{
+	padding: 1rem;
+	border: 1px solid #666;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #444; 
+	border-radius: 6px;
+}

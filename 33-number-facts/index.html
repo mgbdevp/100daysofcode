@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Number Facts</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+		input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {-webkit-appearance: none;margin: 0;}
+
+		body{background-color: #161616;color: #eee;font-family: 'Open Sans', sans-serif;}
+		main{text-align: center;}
+		header{padding: 1rem 0;}
+		input, button{font-family: inherit;background-color: #282828;color: inherit;padding: 8px 14px;border: none;outline: none;font-size: 16px;}
+		button{background-color: #3467eb;transition: .2s ease;cursor: pointer;}
+		button:hover{transform: translateX(4px);}
+		#content{width: 70%;margin: 1rem auto;padding: 1rem;}
+		@media only screen and (max-width: 700px){#content{width: 90%}}
+		p{font-size: 20px;}
+		span{color: orange;margin-bottom: 8px;}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Number Facts</h1>
+		</header>
+		<div id="search-box">
+			<input type="number" id="num" placeholder="Number">
+			<button onclick="getNumDetails()">Get</button>
+		</div>
+		<div id="content"></div>
+	</main>
+<script>
+	const content = document.getElementById('content');
+
+	function getNumDetails(){
+		content.innerHTML = '';
+;		const num = document.getElementById('num').value;
+		fetch(`http://numbersapi.com/${num}/math`)
+		.then(res => res.text())
+		.then(d => {
+			const mathd = document.createElement('p');
+			mathd.innerHTML = d;
+			content.appendChild(mathd);
+		});
+
+		fetch(`http://numbersapi.com/${num}`)
+		.then(res => res.text())
+		.then(d => {
+			const triviad = document.createElement('p');
+			triviad.innerHTML = '<span>Also:</span> <br> ' + d;
+			content.appendChild(triviad);
+		});
+
+	}
+</script>
+</body>
+</html>

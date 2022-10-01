@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sunrise Sunset</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+		input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {-webkit-appearance: none;margin: 0;}
+
+		body{background-color: #161616;color: #eee;font-family: 'Open Sans', sans-serif;}
+		main{text-align: center;}
+		header{padding: 1rem 0;}
+		input, button{font-family: inherit;background-color: #282828;color: inherit;padding: 8px 14px;border: none;outline: none;font-size: 16px;}
+		button{background-color: #3467eb;transition: .2s ease;cursor: pointer;}
+		button:hover{transform: translateX(4px);}
+		#content{width: 70%;margin: 1rem auto;padding: 1rem;}
+		@media only screen and (max-width: 700px){#content{width: 90%}input,button{display: block;margin: 6px auto;}}
+		p{font-size: 18px;margin: 8px 0;}
+		span{color: orange;margin: 16px 0;display: block;}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Sunrise Sunset</h1>
+		</header>
+		<div id="search-box">
+			<input type="number" id="lat" placeholder="Lat">
+			<input type="number" id="long" placeholder="Long">
+			<button onclick="getD()">Get</button>
+		</div>
+		<span>All times are in UTC (GMT 0)</span>
+		<div id="content"></div>
+	</main>
+<script>
+	const content = document.getElementById('content');
+
+	function getD(){
+		content.innerHTML = '';
+;		const lat = document.getElementById('lat').value;
+;		const long = document.getElementById('long').value;
+		fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}`)
+		.then(res => res.json())
+		.then(d => {
+			const sunrise = document.createElement('p');
+			const sunset = document.createElement('p');
+			const solar_noon = document.createElement('p');
+			const day_length = document.createElement('p');
+			const civil_twilight_begin = document.createElement('p');
+			const civil_twilight_end = document.createElement('p');
+			const nautical_twilight_begin = document.createElement('p');
+			const nautical_twilight_end = document.createElement('p');
+			const astronomical_twilight_begin = document.createElement('p');
+			const astronomical_twilight_end = document.createElement('p');
+
+			sunrise.innerHTML = 'Sunrise: ' + d.results.sunrise;
+			sunset.innerHTML = 'Sunset: ' + d.results.sunset;
+			solar_noon.innerHTML = 'Solar noon: ' + d.results.solar_noon;
+			day_length.innerHTML = 'Day length: ' + d.results.day_length;
+			civil_twilight_begin.innerHTML = 'Civil twilight begin: ' + d.results.civil_twilight_begin;
+			civil_twilight_end.innerHTML = 'Civil twilight end: ' + d.results.civil_twilight_end;
+			nautical_twilight_begin.innerHTML = 'Nautical twilight begin: ' + d.results.nautical_twilight_begin;
+			nautical_twilight_end.innerHTML = 'Nautical twilight end: ' + d.results.nautical_twilight_end;
+			astronomical_twilight_begin.innerHTML = 'Astronomical twilight begin: ' + d.results.astronomical_twilight_begin;
+			astronomical_twilight_end.innerHTML = 'Astronomical twilight end: ' + d.results.astronomical_twilight_end;
+
+			content.append(sunrise, sunset, solar_noon, day_length, civil_twilight_begin, civil_twilight_end, nautical_twilight_begin, nautical_twilight_end, astronomical_twilight_begin, astronomical_twilight_end);
+		});
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lipsum English</title>
+	<style type="text/css">
+		body{background-color: #121212;color: #ddd;text-align: center;font-family: sans-serif;}
+		#c-box{margin: 2rem;}
+		input, button{background-color: #27ae60;color: inherit;font-family: inherit;padding: 10px;border: none;outline: none;font-size: 18px;width: 140px;border-radius: 4px;box-sizing: border-box;}
+		input{background-color: transparent;border: 2px solid #444;}
+		button{display: block;margin: 1rem auto;transition: .2s; border: 2px solid transparent;}
+		button:hover{background-color: transparent;border: 2px solid #444;}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Lipsum English</h1>
+			<p>Generate dummy text in English</p>
+		</header>
+		<div id="controls">
+			<input type="number" id="p" placeholder="paragraph">
+			<input type="number" id="s" placeholder="sentences">
+			<button onclick="g()">Generate!</button>
+		</div>
+		<div id="c-box"></div>
+	</main>
+<script>
+	const cb = document.getElementById('c-box');
+
+	function g(){
+		cb.innerHTML = '';
+		const p = document.getElementById('p').value;
+		const s = document.getElementById('s').value;
+
+		fetch(`http://metaphorpsum.com/paragraphs/${p}/${s}?p=true`)
+		.then(res => res.text())
+		.then(data => {
+			const dtdv = document.createElement('div');
+			cb.appendChild(dtdv);
+			const lipsum = document.createElement('p');
+			lipsum.innerHTML = data;
+			dtdv.appendChild(lipsum);
+		})
+	}
+</script>
+</body>
+</html>
