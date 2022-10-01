@@ -1,0 +1,79 @@
+body{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-image: linear-gradient(to right, #371B58, #4C3575);
+	color: #F3E9DD;
+	font-family: 'Overpass', 'Roboto', 'Arial', sans-serif;
+	height: 100vh;
+	margin: 0;
+	-webkit-tap-highlight-color: transparent;
+}
+
+h2{
+	font-weight: normal;
+}
+
+.input-box, .block-btn{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 90%;
+}
+
+input, button{
+	font-family: inherit;
+	outline: none;
+	font-size: 18px;
+	padding: 10px 16px;
+	border-radius: 0;
+	color: #000;
+	margin: 0;
+	border: none;
+	box-sizing: border-box;
+	box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.5);
+}
+
+input::placeholder{
+	color: #444;
+}
+
+input{
+	background-color: #FCF8E8;
+	width: 140px;
+
+}
+
+input:first-child{
+	border-top-left-radius: 8px;
+}
+
+input:last-child{
+	border-top-right-radius: 8px;
+}
+
+button{
+	background-color: #000;
+	color: #fff;
+	width: calc(140px * 3);
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	transition: .2s;
+	cursor: pointer;
+}
+
+button:hover{
+	color: #ccc;
+}
+
+@media only screen and (max-width: 720px){
+	input{
+		width: 90%;
+		border-radius: 8px;
+	}
+	button{
+		width: 90%;
+		border-radius: 8px;
+	}
+}

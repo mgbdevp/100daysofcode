@@ -1,0 +1,87 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Libre Franklin', sans-serif;
+	background-color: #141617;
+	color: #eee;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.component{
+	width: 360px;
+	background-color: #1F2630;
+	box-sizing: border-box;
+	padding: 1.75rem;
+	border-radius: 1.5rem;
+	box-shadow: 0 2px 4px 2px #181818;
+}
+
+.rounded-incenter{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: #272E38;
+	width: 44px;
+	height: 40px;
+	font-size: 16px;
+}
+
+.text-orange{
+	color: #F6791C;
+}
+
+.description{
+	color: #bbb;
+}
+
+.rating{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.rating .rounded-incenter{
+	margin: 0 10px;
+	cursor: pointer;
+}
+
+.submit-bottom{
+	margin-top: 1.5rem;
+}
+
+.submit-bottom button{
+	background-color: #F6791C;
+	color: #eee;
+	width: 100%;
+	font-family: inherit;
+	padding: 10px;
+	outline: none;
+	border: none;
+	border-radius: 1.5rem;
+	cursor: pointer;
+	transition: .2s background;
+}
+
+.icon{
+	display: flex;
+}
+
+.rounded-incenter:focus{
+	background-color: #F6791C;
+}
+
+.submit-bottom button:hover{
+	background-color: #c95f10;
+}
+
+.submit-bottom button:active{
+	box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.3);
+}

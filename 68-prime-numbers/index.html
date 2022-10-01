@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.9">
+	<title>Prime Numbers</title>
+	<link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body{background-color: #1B2430;color: #E8F9FD;text-align: center;font-family: 'Quattrocento Sans', sans-serif;}
+		#m{width: 500px;margin: 0 auto;overflow-wrap: break-word;}
+		p{line-height: 150%;font-size: 18px;}
+	</style>
+</head>
+<body>
+	<div id="m">
+		<p id="i"></p>
+		<p id="p"></p>
+	</div>
+<script>
+	const i = document.getElementById('i');
+	const p = document.getElementById('p');
+	const lowerNumber = parseInt(prompt('Lower: '));
+	const higherNumber = parseInt(prompt('Higher: '));
+	if(higherNumber >= 10000){
+		alert('BRAINSTORM TIME!!!');
+	}
+	i.innerHTML = `The prime numbers between ${lowerNumber} and ${higherNumber} are:`;
+
+	for (let i = lowerNumber; i <= higherNumber; i++) {
+	    let flag = 0;
+
+	    for (let j = 2; j < i; j++) {
+	        if (i % j == 0) {
+	            flag = 1;
+	            break;
+	        }
+	    }
+
+	    if (i > 1 && flag == 0) {
+	        p.innerHTML += i + ', ';
+	    }
+	}
+</script>
+</body>
+</html>

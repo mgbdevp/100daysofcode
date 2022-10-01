@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Factorial Calculator</title>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Factorial Calculator</h1>
+		</header>
+		<div class="input-box">
+			<input type="number" id="fac" placeholder="factorial" oninput="cvrt()">
+			<input type="number" id="num" readonly placeholder="result">
+		</div>
+	</main>
+<script>
+	const num = document.getElementById('num');
+	function cvrt(){
+		const fac = document.getElementById('fac').value;
+		num.value = factorialize(fac);
+	}
+
+	function factorialize(num) {
+		if (num === 0 || num === 1){
+			return 1;
+		}
+		for (var i = num - 1; i >= 1; i--) {
+			num *= i; 
+		}
+		return num; 
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>100.000 Digits Of PI</title>
+</head>
+<body>
+	<p id="pi" style="word-break: break-all;font-family: monospace;font-size: 14px;"></p>
+<script>
+	let i = 1n;
+	let x = 3n * (10n ** 100000n);
+	let pi = x;
+	while (x > 0) {
+	        x = x * i / ((i + 1n) * 4n);
+	        pi += x / (i + 2n);
+	        i += 2n;
+	}
+	const res = pi / (10n ** 20n);
+	document.getElementById('pi').innerHTML = res.toString().charAt(0) + '.' + res.toString().substring(1);
+</script>
+</body>
+</html>

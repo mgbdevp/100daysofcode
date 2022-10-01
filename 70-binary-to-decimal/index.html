@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Binary to Decimal</title>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Binary to Decimal</h1>
+		</header>
+		<div class="input-box">
+			<input type="number" id="bin" placeholder="binary" oninput="cvrt()">
+			<input type="number" id="dec" readonly placeholder="decimal">
+		</div>
+	</main>
+<script>
+	
+	const dec = document.getElementById('dec');
+	function cvrt(){
+		const bin = document.getElementById('bin').value;
+		const bd = bin.toString(2);
+		const bdbd = parseInt(bin.toString(), 2);
+		dec.value = bdbd;
+	}
+</script>
+</body>
+</html>

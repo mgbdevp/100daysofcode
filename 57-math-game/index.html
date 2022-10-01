@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Math Game</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Math Game</h1>
+		</header>
+		<div id="quiz">
+			<h2 id="ophtm"></h2>
+			<input type="number" id="ans" placeholder="?" autofocus autocomplete="off">
+			<button onclick="submit()">Submit</button>
+		</div>
+		<div id="inf">
+			<h2 id="info"></h2>
+		</div>
+		<footer>
+			<p>❮❯ by MAGABEE with ☕ 2022</p>
+		</footer>
+	</main>
+<script>
+	const ophtm = document.getElementById('ophtm');
+	const info = document.getElementById('info');
+	const ops = ['+', '-', '*'];
+
+	let trueans;
+	let opr;
+
+	function createOp(){
+		info.innerHTML = '';
+		document.getElementById('ans').value = '';
+
+		const a = Math.floor(Math.random() * 100);
+		const b = Math.floor(Math.random() * 100);
+
+		const op = ops[Math.floor(Math.random() * ops.length)];
+
+		opr = `${a} ${op} ${b}`;
+
+		trueans = eval(opr);
+
+		ophtm.innerHTML = `${opr} = `;
+	}
+
+	function submit(){
+		const ans = document.getElementById('ans').value;
+		if(ans == trueans){
+			info.innerHTML = 'Correct';
+		}
+		else{
+			info.innerHTML = 'Wrong';
+		}
+
+		setTimeout(createOp, 750);
+	}
+
+	createOp();
+
+	document.getElementById('ans').onkeypress = (e) => {
+		if(e.key === 'Enter') {
+			document.getElementsByTagName('button')[0].click();
+		}
+	}
+</script>
+</body>
+</html>

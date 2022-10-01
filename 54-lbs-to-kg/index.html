@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lbs to kg</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+  			-webkit-appearance: none;
+ 			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>LBS to KG</h1>
+		</header>
+		<section id="controls">
+			<input type="number" id="lbs" placeholder="Pounds" oninput="cvrt()">
+		</section>
+		<section id="result">
+			<p id="xeqto"></p>
+			<h1 id="xkg"></h1>
+		</section>
+	</main>
+<script>
+	const xeqto = document.getElementById('xeqto');
+	const xkg = document.getElementById('xkg');
+	function cvrt(){
+		const lbs = document.getElementById('lbs').value;
+
+		const result = ((lbs * 0.4535).toFixed(2));
+
+		xeqto.innerHTML = lbs + 'lbs equal to: ';
+		xkg.innerHTML = result + 'kg';
+	}
+</script>
+</body>
+</html>

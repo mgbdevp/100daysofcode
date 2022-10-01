@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Clock</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body{margin: 0;height: 100vh;display: flex;justify-content: center;align-items: center;;color: #000;font-family: 'Poppins', sans-serif;}
+		h1{font-size: 48px;font-weight: normal;}
+	</style>
+</head>
+<body>
+	<h1 id="time"></h1>
+
+<script>
+	document.body.style.backgroundImage = `linear-gradient(#${(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')}, #${(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')})` ;
+	const time = document.getElementById('time');
+
+	setInterval(() => {
+		const d = new Date();
+		time.innerHTML = `${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padStart(2, '0')}`;
+	}, 1000)
+</script>
+</body>
+</html>

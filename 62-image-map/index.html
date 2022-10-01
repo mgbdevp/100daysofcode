@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Image Map</title>
+	<style type="text/css">
+		body{text-align: center;background-color: #141414;color: #eee;font-family: sans-serif;}
+		#img-content{display: flex;justify-content: center;}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Image Map</h1>
+			<p>Touch the area you want in the picture, go to the wikipedia page for that object</p>
+		</header>
+		<div id="img-content">
+			<img src="pc-desk.jpg" usemap="#deskmap" width="600" height="564">
+			<map name="deskmap">
+				<area shape="rect" coords="377,0,600,200" alt="Poster" href="https://en.wikipedia.org/wiki/Poster">
+				<area shape="rect" coords="193,205,479,294" alt="Computer monitor" href="https://en.wikipedia.org/wiki/Computer_monitor">
+				<area shape="rect" coords="246,290,357,380" alt="Laptop" href="https://en.wikipedia.org/wiki/Laptop">
+				<area shape="rect" coords="468,295,521,401" alt="Headphone" href="https://en.wikipedia.org/wiki/Headphones">
+				<area shape="rect" coords="355,321,421,361" alt="Microphone" href="https://en.wikipedia.org/wiki/Microphone">
+				<area shape="rect" coords="350,360,387,397" alt="Mouse" href="https://en.wikipedia.org/wiki/Computer_mouse">
+				<area shape="rect" coords="400,366,445,423" alt="Wireless Speaker" href="https://en.wikipedia.org/wiki/Wireless_speaker">
+				<area shape="rect" coords="10,220,181,563" alt="Office chair" href="https://en.wikipedia.org/wiki/Office_chair">
+			</map>
+		</div>	
+	</main>
+</body>
+</html>

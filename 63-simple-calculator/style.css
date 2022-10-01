@@ -1,0 +1,55 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+#ans{
+	margin-top: 2rem;
+}
+
+body{
+	background-color: #1B2430;
+	color: #F9F9F9;
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#calc{
+	margin-top: 2rem;
+}
+
+h2{
+	margin: 0;
+}
+
+
+h2, input{
+	font-weight: normal;
+}
+
+input{
+	box-sizing: border-box;
+	background-color: #161d26;
+	border: 1px solid #1363DF;
+	box-shadow: 5px 5px 10px #161d26;
+	color: inherit;
+	outline: none;
+	font-family: inherit;
+	font-size: 18px;
+	border-radius: 4px;
+	padding: 8px 16px;
+	text-align: center;
+	width: 320px;
+}
+
+footer{
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+}
+
+footer p{
+	font-size: 14px;
+}

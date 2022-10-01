@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Coin flipper</title>
+	<style type="text/css">
+		body{background-color: #111;color: #fff;text-align: center;font-family: sans-serif;}
+		#content{margin-top: 3rem;}
+		#coin{font-size: 4rem;font-weight: normal;}
+		button{cursor: pointer;font-size: 20px;padding: 10px 20px;border: none;outline: none;border-radius: 6px;box-sizing: border-box;}
+		button:active{margin-top: 2px;}
+	</style>
+</head>
+<body>
+	<h1>Coin flipper</h1>
+	<div id="content">
+		<h1 id="coin"></h1>
+	</div>
+	<button onclick="flip()">FLIP</button>
+<script>
+	const coin = document.getElementById('coin');
+
+	function flip(){
+		const ch = Math.floor(Math.random() * 2);
+		if(ch == 0){
+			coin.innerHTML = 'HEADS';
+		}
+		else{
+			coin.innerHTML = 'TAILS';
+		}
+	}
+</script>
+</body>
+</html>

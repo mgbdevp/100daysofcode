@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Word Counter</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	<style>
+		::-webkit-scrollbar{width: 10px;}
+		::-webkit-scrollbar-thumb{background-color: #47B5FF;border-radius: 8px;}
+		body{background-color: #1B2430;color: #F9F9F9;font-family: 'Poppins';margin: 0;height: 100vh;display: flex;justify-content: center;align-items: center;text-align: center;}
+		textarea{width: 400px;height: 200px;font-family: inherit;font-size: 16px;background-color: #161d26;color: inherit;outline: none;resize: none;padding: 10px 20px;border: 2px solid #1363DF;box-shadow: 5px 5px 10px #1B2430;border-radius: 8px;}
+		@media only screen and (max-width: 768px){textarea{width: 300px;}}
+	</style>
+</head>
+<body>
+	<main>
+		<div id="cls">
+			<textarea id="txarea" placeholder="Enter words here." oninput="calc()"></textarea>
+		</div>
+		<div id="result">
+			<h1 id="count"></h1>
+		</div>
+	</main>
+<script>
+	const count = document.getElementById('count');
+	function calc(){
+		const str = document.getElementById('txarea').value;
+
+		if(str.length === 0) count.innerHTML = '';
+		else{
+			count.innerHTML = str.split(' ').length;
+		}
+	} 
+</script>
+</body>
+</html>

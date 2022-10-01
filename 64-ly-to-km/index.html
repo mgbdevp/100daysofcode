@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Light Year To KM</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+  			-webkit-appearance: none;
+ 			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Light Year To KM</h1>
+		</header>
+		<section id="controls">
+			<input type="number" id="ly" placeholder="Light year" oninput="cvrt()">
+		</section>
+		<section id="result">
+			<p id="xeqto"></p>
+			<h1 id="xkm"></h1>
+		</section>
+	</main>
+<script>
+	const xeqto = document.getElementById('xeqto');
+	const xkm = document.getElementById('xkm');
+	function cvrt(){
+		const ly = document.getElementById('ly').value;
+
+		const result = ((ly * 946052840000).toFixed(2));
+
+		xeqto.innerHTML = ly + 'light year equal to: ';
+		xkm.innerHTML = result + 'km';
+	}
+</script>
+</body>
+</html>

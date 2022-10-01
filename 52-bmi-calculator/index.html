@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BMI Calculator</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main>
+		<header>
+			<h1>BMI Calculator</h1>
+		</header>
+		<section id="controls">
+			<input type="text" id="height" placeholder="Height (in CM)" oninput="calcBMI()">
+			<input type="text" id="weight" placeholder="Weight (in KG)" oninput="calcBMI()">
+		</section>
+		<section id="result" style="display: none;">
+			<h1 id="bmiresult"></h1>
+			<p>Guide: </p>
+			<p>
+				Underweight: < 18.5
+				<br>
+				Normal range: 18.5 - 25
+				<br>
+				Overweight: > 25
+			</p>
+		</section>
+	</main>
+<script>
+	const r = document.getElementById('result');
+	const bmires = document.getElementById('bmiresult');
+	function calcBMI(){
+		r.style.display = 'block';
+		const h = document.getElementById('height').value;
+		const w = document.getElementById('weight').value;
+
+		const result = (w / Math.pow((h/100), 2)).toFixed(1);
+
+		bmires.innerHTML = result;
+
+
+	}
+</script>
+</body>
+</html>

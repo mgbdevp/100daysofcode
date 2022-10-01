@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BMR Calculator</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main>
+		<header>
+			<h1>BMR Calculator</h1>
+			<p>For gigachads</p>
+		</header>
+		<section id="controls">
+			<input type="text" id="height" placeholder="Height (in CM)" oninput="calcBMR()">
+			<input type="text" id="weight" placeholder="Weight (in KG)" oninput="calcBMR()">
+			<input type="text" id="age" placeholder="Age" oninput="calcBMR()">
+		</section>
+		<section id="result" style="display: none;">
+			<h1 id="BMRresult"></h1>
+			<p>Guide: </p>
+			<p>
+				Normal range: 1000-2000
+			</p>
+		</section>
+	</main>
+<script>
+	const r = document.getElementById('result');
+	const BMRres = document.getElementById('BMRresult');
+	function calcBMR(){
+		r.style.display = 'block';
+		const h = document.getElementById('height').value;
+		const w = document.getElementById('weight').value;
+		const a = document.getElementById('age').value;
+
+		if(h > 240 || w > 200 || a > 120){
+			alert('are you hulk');
+		}
+
+		const result = (88.362 + (13.397*w) + (4.799*h) - (5.677*a)).toFixed();
+
+		BMRres.innerHTML = result;
+
+
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Fibonacci Series to 100</title>
+	<style type="text/css">
+		body{text-align: center;}
+		p{margin: 0;font-size: 14px;font-family: monospace;letter-spacing: 2px;}
+		p:nth-child(2){margin-top: 1rem;font-family: sans-serif;}
+	</style>
+</head>
+<body>
+	<div id="m"></div>
+	<p>seems like eiffel tower. right?</p>
+<script>
+	const num = 100;
+	let n1 = 0, n2 = 1, nextTerm;
+	for (let i = 1; i <= num; i++) {
+		const p = document.createElement('p');
+		p.innerHTML = n1;
+		document.getElementById('m').appendChild(p);
+	    console.log(n1);
+	    nextTerm = n1 + n2;
+	    n1 = n2;
+	    n2 = nextTerm;
+	}
+</script>
+</body>
+</html>
