@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>M/\G/\B33</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+	<main>
+		<p><span id="typewriter-effect"></span> and maybe i'm a Web Developer</p>
+		<p>
+			Here are some projects i've build
+			<br>
+			<a href="http://magabee.rf.gd/viewer">Viewer.io</a>,
+			<a href="http://magabee.rf.gd/titanium">Titanium</a>,
+			<a href="http://magabee.rf.gd/qr-generator">QR Code Generator</a>
+		</p>
+		<div class="social">
+			<a href="https://instagram.com/_._w2h_._">
+				<img src="ig-icon.svg">
+			</a>
+			<a href="https://youtube.com/c/magabee">
+				<img src="yt-icon.svg">
+			</a>
+			<a href="http://magabee.rf.gd">
+				<img src="web-icon.svg">
+			</a>
+		</div>
+	</main>
+<script>
+	const twe = document.getElementById('typewriter-effect');
+	const txt = "Hi, i'm Magabee";
+	let i = 0;
+
+	function tw() {
+		if( i < txt.length) {
+			twe.innerHTML += txt.charAt(i);
+			i++;
+			setTimeout(tw, 50);
+			if(i == txt.length){
+				twe.removeAttribute('id');
+			}
+		}
+	}
+	tw();
+</script>
+</body>
+</html>

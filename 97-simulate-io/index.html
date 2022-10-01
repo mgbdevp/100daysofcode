@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>simulate.io</title>
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<header>
+		<h2>simulate.io</h2>
+		<p>auto refresh function added, when you kicked by someone, rejoin again</p>
+	</header>
+	<div id="app">
+		<div id="options">
+			<div>
+				<input type="checkbox" id="f5">
+				<label for="f5">Auto Refresh</label>
+			</div>
+		</div>
+		<div>
+			<input type="text" id="room" placeholder="Room Link"></input>
+			<input type="text" id="username" placeholder="Username"></input>
+		</div>
+		<div>
+			<button onclick="c()">Connect</button>
+		</div>
+		<div>
+			<hr>
+			<input type="text" id="11" placeholder="Send message..">
+		</div>
+	</div>
+
+	<footer>
+		<hr>
+		<p>magabee | 2022</p>
+	</footer>
+<script>
+	let t, u;
+
+	function c(){
+		const room = document.getElementById('room').value;
+		const uname = document.getElementById('username').value;
+		const f5 = document.getElementById('f5');
+
+		const ws = new WebSocket(`wss://server05.gartic.io/socket.io/?EIO=3&transport=websocket`);
+		ws.onopen = () => {
+			ws.send(`42[3,{"v":20000,"nick":"${uname}","avatar":0,"sala":"${room.slice(20)}"}]`);
+		}
+		ws.onmessage = (m) => {
+			const d = JSON.parse(m.data.slice(2));
+			if(d[0] == 5){
+				t = d[2];
+				u = d[1];
+				ws.send(`42[46,${t}]`);
+			}
+			if(f5.checked){
+				if(d[0] == 45 && d[2] == u){
+					ws.close();
+					c();
+				}
+			}
+		}
+
+		setInterval(() => {
+			ws.send(`2`);
+		}, 25000);
+
+		const a = document.getElementById('11');
+
+		a.addEventListener('keydown', (e) => {
+			if(e.key == 'Enter'){
+				ws.send(`42[11,${t},"${a.value}"]`);
+				a.value = '';
+				a.focus();
+			}
+		});
+	}
+</script>
+</body>
+</html>

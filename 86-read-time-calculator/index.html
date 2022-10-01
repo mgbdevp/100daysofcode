@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Read Time Calculator</title>
+	<style type="text/css">
+		body{font-family: sans-serif;background-color: #141414;color: #eee;text-align: center;}
+		textarea,button{font-family: inherit;font-size: 16px;padding: 12px 16px;outline: none;display: block;margin: 1rem auto;border-radius: 8px;}
+		textarea{width: 460px;height: 230px;color: inherit;background-color: rgba(0, 0, 0, 0.6);resize: none;border: 2px solid dodgerblue;overflow: hidden;}
+		button{background-color: azure;color: #000;cursor: pointer;}
+		footer{position: absolute;bottom: 10px;left: 0;right: 0;font-size: 14px;}
+		@media only screen and (max-width: 768px){textarea{width: 90%}}
+		#ct{display: none;}
+		h1, h2{font-weight: normal;}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Read Time Calculator</h1>
+			<p>Calculate read time of an article</p>
+		</header>
+		<div id="controls">
+			<textarea placeholder="Paste or write article here"></textarea>
+			<button onclick="calc()">Calculate</button>
+		</div>
+		<div id="content">
+			<p id="ct">Average read time of your article is: </p>
+			<h2 id="time"></h2>
+		</div>
+		<footer>
+			<p>by MAGABEE &copy 2022</p>
+		</footer>
+	</main>
+<script>
+	const time = document.getElementById('time');
+	const ct = document.getElementById('ct');
+	function calc(){
+		const tx = document.getElementsByTagName('textarea')[0].value;
+		const calculate = tx.trim().split(/\s+/).length / 200;
+		const calculated = Math.floor(calculate) + ' minutes and ' + (parseInt(calculate.toFixed(2).toString().split('.')[1]) * 0.6).toString().substring(0, 2) + ' seconds';
+		ct.style.display = 'inline-block';
+		time.innerHTML = calculated;
+	}
+</script>
+</body>
+</html>

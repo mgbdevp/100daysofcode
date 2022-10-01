@@ -1,0 +1,89 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+body{
+	background-color: #212529;
+	color: #eee;
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Karla', sans-serif;
+	-webkit-tap-highlight-color: transparent;
+}
+
+#app{
+	width: 600px;
+	height: 380px;
+	max-width: 95%;
+	background-color: #dee2e6;
+	color: #000;
+	box-shadow: rgba(255, 255, 255, 0.3) 0px 2px 8px;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 2em 4em;
+}
+
+h1, h2{
+	margin: 0;
+}
+
+hr{
+	border: none;
+	height: 1px;
+	background-color: #bbb;
+}
+
+#calc, input, button{
+	font-size: 20px;
+}
+
+#calc{
+	margin: 1.5em 0;
+}
+
+input, button{
+	font-family: inherit;
+	outline: none;
+	border: none;
+}
+
+input{
+	background-color: transparent;
+	border-bottom: 2px solid #3d5a80;
+	width: 80px;
+	margin: 0 6px;
+	text-align: center;
+}
+
+#btn{
+	margin-top: 1.5em;
+}
+
+button{
+	background-color: #6247aa;
+	color: #eee;
+	padding: 12px 24px;
+	border-radius: 4px;
+	transition: .2s ease background;
+	cursor: pointer;
+}
+
+button:hover{
+	background-color: #6247aadd;
+}
+
+@media only screen and (max-width: 768px){
+	#app{
+		padding: 2em;
+	}
+}

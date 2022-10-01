@@ -1,0 +1,167 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+}
+
+h1, h2{
+	font-weight: 400;
+}
+
+body{
+	background-color: #161724;
+	color: #e5e5e5;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	font-family: 'Inter', Segoe UI, sans-serif;
+	-webkit-tap-highlight-color: transparent;
+}
+
+#form{
+	width: 800px;
+	height: 600px;
+	background-color: #23243b;
+	padding: 3rem;
+	max-width: 100%;
+	border-radius: 12px;
+}
+
+#form-flex{
+	display: flex;
+	flex-wrap: wrap;
+	margin: 1.5rem 0;
+}
+
+#ff-profile-picture{
+	width: 32%;
+}
+
+#ff-profile-info{
+	width: 60%;
+	margin-left: 3rem;
+	text-align: center;
+}
+
+#ff-profile-info div{
+	display: grid;
+	grid-column-gap: 10px;
+	grid-row-gap: 5px;
+	margin: 0.5rem 0;
+}
+
+#ff-profile-info div:first-child{
+	margin: 0;
+}
+
+.grid-2{
+	grid-template-columns: repeat(2, auto);
+}
+
+.grid-2 input, .grid-2 select{
+	width: 206px;
+}
+
+.grid-1{
+	grid-template-columns: auto;
+}
+
+#border{
+	border: 2px solid #474F66;
+	border-radius: 6px;
+	padding: 1.5rem;
+	text-align: center;
+}
+
+#border img{
+	width: 140px;
+	height: auto;
+	padding: 1rem;
+	display: block;
+	margin: 0 auto;
+	border-radius: 50%;
+}
+
+#form-buttons{
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+a{
+	text-decoration: none;
+	color: peachpuff;
+}
+
+#purple-link{
+	color: #6169cc;
+}
+
+@media only screen and (max-width: 720px){
+	body{
+		margin: 10px;
+	}
+	#form{
+		height: 100%;
+		width: 100%;
+	}
+	#ff-profile-picture, #ff-profile-info{
+		width: 100%;
+		margin: 0;
+		margin-top: 1rem;
+	}
+	.mob-f{
+		width: 100% !important;
+	}
+	#form-buttons{
+		justify-content: center;
+	}
+}
+
+input, button, select{
+	font-family: inherit;
+	font-size: 15px;
+	padding: 12px 16px;
+	border-radius: 6px;
+	outline: none;
+	border: none;
+}
+
+input, select{
+	background-color: transparent;
+	color: #e5e5e5;
+	border: 2px solid #474F66;
+	transition: .2s ease border;
+}
+
+input:focus, select:focus{
+	border-color: darkolivegreen;
+}
+
+small{
+	text-align: left;
+}
+
+select option{
+	color: #000;
+}
+
+button{
+	margin: 0 0.5rem;
+	cursor: pointer;
+	transition: .2s box-shadow;
+}
+
+button:first-child{
+	background-color: #16182d;
+	color: #e5e5e5;
+}
+
+button:hover{
+	box-shadow: 0 2px 6px 2px darkolivegreen;
+}
+
+button:active{
+	transform: scale(1.05);
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>DEMO</title>
+	<style>
+		::selection{
+			background-color: lime;
+			color: #000;
+		}
+		body{margin: 0;background-color: #000;font-family: monospace;display: flex;flex-direction: column;justify-content: center;align-items: center;height: 100vh;}
+		#app{width: 80%;height: 100vh;color: lime;background-color: #000;padding: 12px;box-sizing: border-box;outline: none;border: none;resize: none;white-space: pre-wrap;font-size: 17px;}
+	</style>
+</head>
+<body>
+	<textarea id="app" autofocus></textarea>
+<script>
+	const app = document.getElementById('app');
+	app.value = '> ';
+	document.onkeydown = (e) => {
+		if(e.key == 'Enter'){
+			app.value += `\n> `;
+			e.preventDefault();
+		}
+	}
+</script>
+</body>
+</html>

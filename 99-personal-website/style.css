@@ -1,0 +1,49 @@
+*{
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body{
+	height: 100vh;
+	background: linear-gradient(160deg, #003973, #E5E5BE);
+	font-family: 'Inter', Segoe UI, sans-serif;
+	color: #ccc;
+	font-size: 24px;
+	font-weight: 300;
+	-webkit-tap-highlight-color: transparent;
+}
+
+main{
+	height: 100%;
+	width: 100%;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+a{
+	text-decoration: none;
+	color: #fff3b0;
+	transition: .2s ease filter;
+}
+
+a:hover{
+	filter: drop-shadow(0 0 5px);
+}
+
+p{
+	margin: 1rem 0;
+	line-height: 1.5;
+}
+
+.social img{
+	width: 60px;
+	margin: 0.5rem;
+}
+
+#typewriter-effect::after {
+	content: '|';
+}

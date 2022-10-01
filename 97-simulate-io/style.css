@@ -1,0 +1,56 @@
+body{
+    background-color: #1B2430;
+    color: #EEF2E6;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+}
+input[type='text'], button{
+   font-family: inherit;
+   font-size: 16px;
+   padding: 6px 12px;
+   width: 200px;
+   border: none;
+   outline: none;
+   outline-offset: 10px;
+}
+input[type='checkbox']{
+   transform: scale(1.2);
+}
+input{
+   background-color: #FFE9A0;
+}
+button{
+   background-color: #42855B;
+   color: inherit;
+}
+button:hover{
+   background-color: #42855BDD;
+}
+hr{
+   border: none;
+   height: 1px;
+   background-color: #999;
+   width: 280px;
+   margin: 1rem auto !important;
+}
+footer{
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 20px;
+}
+#app > div{
+   margin: 1rem 0;
+}
+
+#options div{
+   background-color: rgba(0, 0, 0, 0.5);
+   display: inline-block;
+   padding: 6px 12px;
+}
+
+#app{
+   width: 460px;
+   margin: 0 auto;
+   max-width: 100%;
+}

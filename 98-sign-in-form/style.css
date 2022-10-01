@@ -1,0 +1,120 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	background-color: #FAF2EA;
+	color: #000;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Inter', sans-serif;
+	font-size: 16px;
+	-webkit-tap-highlight-color: transparent;
+}
+
+h2, h3{
+	font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6{
+	margin: 0;
+}
+
+#form{
+	width: 450px;
+	height: 550px;
+	background-color: #111317;
+	color: #d5d5d5;
+	border-radius: 4px;
+	padding: 2rem;
+	text-align: center;
+	max-width: 100%;
+}
+
+input, button{
+	font-family: inherit;
+	display: block;
+	width: 100%;
+	font-size: inherit;
+	padding: 10px;
+	outline: none;
+	border: none;
+	margin: 1.5rem 0;
+	border-radius: 4px;
+}
+
+input[type='checkbox']{    
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    transform: scale(1.5);
+}
+
+#credentials{
+	margin: 1.5rem 0;
+}
+
+input{
+	background-color: transparent;
+	color: inherit;
+	border-bottom: 1px solid #323232;
+	transition: .2s ease border;
+}
+
+button{
+	cursor: pointer;
+}
+
+input:focus{
+	border-color: #9D6C1B;
+}
+
+button:active{
+	transform: scale(0.98);
+}
+
+#additional{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 1.5rem 0;
+}
+
+#additional div{
+	display: flex;
+	align-items: center;
+}
+
+#f-left span{
+	margin: 0 8px;
+}
+
+a{
+	text-decoration: none;
+	color: #DB9314;
+	text-underline-position: under;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+#small{
+	font-size: 14px;
+}
+
+#sign-in{
+	background-color: #DB9314;
+}
+
+#sign-up{
+	background-color: #c9cedd;
+}
+
+#sign-up-box{
+	margin-top: 3rem;
+}

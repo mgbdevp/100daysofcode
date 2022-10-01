@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>demo</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+		body{background-color: #a3b18a;color: #000;font-family: 'Lato', sans-serif;text-align: center;}
+		.flex{display: flex;gap: 6px;flex-wrap: wrap;margin: 1rem auto;width: 960px;max-width: 95%;}
+		p{margin: 0;cursor: pointer;}
+		.flex p{background-color: rgba(0, 0, 0, 0.5);color: #ddd;border-radius: 4px;width: 32px;height: 32px;display: flex;
+			justify-content: center;align-items: center;font-size: 18px;}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Unicode Characters</h1>
+		<p>Click character for copy to clipboard</p>
+	</header>
+	<div id="c">
+		<h2>Basic Latin</h2>
+		<div class="flex" id="f1"></div>
+		<h2>Latin-1 Supplement</h2>
+		<div class="flex" id="f2"></div>
+		<h2>Latin Extended A</h2>
+		<div class="flex" id="f3"></div>
+		<h2>Latin Extended B</h2>
+		<div class="flex" id="f4"></div>
+		<h2>Spacing Modifiers</h2>
+		<div class="flex" id="f5"></div>
+		<h2>Diacritical Marks</h2>
+		<div class="flex" id="f6"></div>
+		<h2>Greek and Coptic</h2>
+		<div class="flex" id="f7"></div>
+		<h2>Basic Cyrillic</h2>
+		<div class="flex" id="f8"></div>
+		<h2>Cyrilic Supplement</h2>
+		<div class="flex" id="f9"></div>
+		<h2>General Punctuation</h2>
+		<div class="flex" id="f10"></div>
+		<h2>Currency Symbols</h2>
+		<div class="flex" id="f11"></div>
+		<h2>Letterlike Symbols</h2>
+		<div class="flex" id="f12"></div>
+		<h2>Arrows</h2>
+		<div class="flex" id="f13"></div>
+		<h2>Mathematical Operators</h2>
+		<div class="flex" id="f14"></div>
+		<h2>Box Drawings</h2>
+		<div class="flex" id="f15"></div>
+		<h2>Block Elements</h2>
+		<div class="flex" id="f16"></div>
+		<h2>Geometric Shapes</h2>
+		<div class="flex" id="f17"></div>
+		<h2>Miscellaneous Symbols</h2>
+		<div class="flex" id="f18"></div>
+		<h2>Dingbats</h2>
+		<div class="flex" id="f19"></div>
+	</div>
+	<footer>
+		<p>magabee | &#169 2022</p>
+	</footer>
+<script>
+	const f1 = document.getElementById('f1');
+	const f2 = document.getElementById('f2');
+	for(let i = 32; i <= 128; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f1.appendChild(s);
+	}
+	for(let i = 160; i < 256; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f2.appendChild(s);
+	}
+	for(let i = 256; i < 384; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f3.appendChild(s);
+	}
+	for(let i = 384; i < 592; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f4.appendChild(s);
+	}
+	for(let i = 688; i < 768; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f5.appendChild(s);
+	}
+	for(let i = 768; i < 880; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f6.appendChild(s);
+	}
+	for(let i = 880; i < 1024; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f7.appendChild(s);
+	}
+	for(let i = 1024; i < 1280; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f8.appendChild(s);
+	}
+	for(let i = 1280; i < 1328; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f9.appendChild(s);
+	}
+	for(let i = 8192; i < 8304; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f10.appendChild(s);
+	}
+	for(let i = 8352; i < 8400; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f11.appendChild(s);
+	}
+	for(let i = 8448; i < 8528; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f12.appendChild(s);
+	}
+	for(let i = 8592; i < 8704; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f13.appendChild(s);
+	}
+	for(let i = 8704; i < 8960; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f14.appendChild(s);
+	}
+	for(let i = 9472; i < 9600; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f15.appendChild(s);
+	}
+	for(let i = 9600; i < 9632; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f16.appendChild(s);
+	}
+	for(let i = 9632; i < 9728; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f17.appendChild(s);
+	}
+	for(let i = 9728; i < 9984; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f18.appendChild(s);
+	}
+	for(let i = 9984; i < 10176; i++){
+		const s = document.createElement('p');
+		s.innerHTML = String.fromCharCode(i);
+		f19.appendChild(s);
+	}
+	const p = document.getElementsByTagName('p');
+	for(let i = 0; i < p.length; i++){
+		const ot = p[i].innerHTML;
+		p[i].addEventListener('click', () => {
+			navigator.clipboard.writeText(p[i].innerHTML).then(() => {
+				p[i].innerHTML = '✅';
+				setTimeout(() => {
+					p[i].innerHTML = ot;
+				}, 1000)
+			});
+		});
+	}
+</script>
+</body>
+</html>
