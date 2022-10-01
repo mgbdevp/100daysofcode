@@ -1,0 +1,115 @@
+body{
+	background-color: #161b21;
+	color: #ddd;
+	font-family: 'Nunito', sans-serif;	
+}
+
+.nav{
+	background-color: #20262e;
+	width: 100%;
+	padding: 0.5rem 2rem;
+	box-sizing: border-box;
+}
+
+.search{
+	text-align: center;
+	margin: 1rem auto;
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	justify-content: center;
+}
+
+.search p{
+	font-size: 14px;
+	margin: 0;
+}
+
+input, button, select{
+	font-family: inherit;
+	font-size: 14px;
+	padding: 4px 6px;
+	outline: none;
+}
+
+.content{
+	text-align: center;
+	min-height: 60vh;
+}
+
+.flex{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.card{
+	background-color: black;
+	padding: 0.75rem;
+	width: 200px;
+	max-width: 200px;
+	margin: 0.5rem;
+	text-align: left;
+}
+
+.card h4{
+	font-weight: normal;
+	margin: 0;
+}
+
+.card p{
+	margin: 0.5rem 0;
+}
+
+@media only screen and (min-width: 2048px){
+	.content{
+		min-height: 72vh;
+	}
+}
+
+
+.about{
+	margin-top: 2rem;
+	background-color: #20262e;
+	width: 100%;
+	padding: 0.5rem;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.about p{
+	font-size: 14px;
+	margin: 0;
+}
+
+h2, h3{
+	font-weight: lighter;
+	margin: 0.5rem 0;
+}
+
+h2{
+	font-size: 18px;
+}
+
+h3{
+	font-size: 16px;
+}
+
+del{
+	color: #d35400;
+}
+
+a{
+	color: inherit;
+	text-decoration: none;
+	margin-left: 4px;
+	margin-top: 2px;
+}
+
+a:hover{
+	color: #bbb;
+}
+
+.metacritic, .steam{
+	display: flex;
+	align-items: center;
+}

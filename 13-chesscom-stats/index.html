@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.6">
+	<title>ChessCom Stats</title>
+	<link href="https://fonts.googleapis.com/css2?family=Arya&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<div>
+				<img src="chesscom-logo.png">
+				<h2>ChessCom Stats</h2>
+			</div>
+			<div>
+				<input type="text" id="username" placeholder="Search player">
+				<button onclick="getPlayerInfo();getFullStats();getClubs();getMatches();">Get</button>
+			</div>
+		</div>
+		<div class="content">
+			<h2>Titled Players</h2>
+		</div>
+		<footer id="footer">
+			<h3>ChessComStats</h3>
+			<p>MAGABEE &copy2022</p>
+			<p>Made with Chess.com Pub API</p>
+		</footer>
+	</main>
+<script>
+	const content = document.querySelector('.content');
+	const username = document.getElementById('username');
+
+	function getTitledPlayers(){
+		//gm
+		fetch('https://api.chess.com/pub/titled/GM')
+		.then(res => res.json())
+		.then(data => {
+			const abbr = document.createElement('h3');
+			const players = document.createElement('small');
+			abbr.innerHTML = 'GM' + ' - ' + data.players.length + ' Players';
+			for(let i = 0; i < data.players.length; i++){
+				players.innerHTML += data.players[i] + ', ';
+			}
+			content.append(abbr, players);
+		});
+		//wgm
+		fetch('https://api.chess.com/pub/titled/WGM')
+		.then(res => res.json())
+		.then(data => {
+			const abbr = document.createElement('h3');
+			const players = document.createElement('small');
+			abbr.innerHTML = 'WGM' + ' - ' + data.players.length + ' Players';
+			for(let i = 0; i < data.players.length; i++){
+				players.innerHTML += data.players[i] + ', ';
+			}
+			content.append(abbr, players);
+		});
+		fetch('https://api.chess.com/pub/titled/IM')
+		.then(res => res.json())
+		.then(data => {
+			const abbr = document.createElement('h3');
+			const players = document.createElement('small');
+			abbr.innerHTML = 'IM' + ' - ' + data.players.length + ' Players';
+			for(let i = 0; i < data.players.length; i++){
+				players.innerHTML += data.players[i] + ', ';
+			}
+			content.append(abbr, players);
+		});
+		fetch('https://api.chess.com/pub/titled/WIM')
+		.then(res => res.json())
+		.then(data => {
+			const abbr = document.createElement('h3');
+			const players = document.createElement('small');
+			abbr.innerHTML = 'WIM' + ' - ' + data.players.length + ' Players';
+			for(let i = 0; i < data.players.length; i++){
+				players.innerHTML += data.players[i] + ', ';
+			}
+			content.append(abbr, players);
+		});
+		fetch('https://api.chess.com/pub/titled/FM')
+		.then(res => res.json())
+		.then(data => {
+			const abbr = document.createElement('h3');
+			const players = document.createElement('small');
+			abbr.innerHTML = 'FM' + ' - ' + data.players.length + ' Players';
+			for(let i = 0; i < data.players.length; i++){
+				players.innerHTML += data.players[i] + ', ';
+			}
+			content.append(abbr, players);
+		});
+		fetch('https://api.chess.com/pub/titled/WFM')
+		.then(res => res.json())
+		.then(data => {
+			const abbr = document.createElement('h3');
+			const players = document.createElement('small');
+			abbr.innerHTML = 'WFM' + ' - ' + data.players.length + ' Players';
+			for(let i = 0; i < data.players.length; i++){
+				players.innerHTML += data.players[i] + ', ';
+			}
+			content.append(abbr, players);
+		});
+		fetch('https://api.chess.com/pub/titled/NM')
+		.then(res => res.json())
+		.then(data => {
+			const abbr = document.createElement('h3');
+			const players = document.createElement('small');
+			abbr.innerHTML = 'NM' + ' - ' + data.players.length + ' Players';
+			for(let i = 0; i < data.players.length; i++){
+				players.innerHTML += data.players[i] + ', ';
+			}
+			content.append(abbr, players);
+		});
+		fetch('https://api.chess.com/pub/titled/WNM')
+		.then(res => res.json())
+		.then(data => {
+			const abbr = document.createElement('h3');
+			const players = document.createElement('small');
+			abbr.innerHTML = 'WNM' + ' - ' + data.players.length + ' Players';
+			for(let i = 0; i < data.players.length; i++){
+				players.innerHTML += data.players[i] + ', ';
+			}
+			content.append(abbr, players);
+		});
+		fetch('https://api.chess.com/pub/titled/CM')
+		.then(res => res.json())
+		.then(data => {
+			const abbr = document.createElement('h3');
+			const players = document.createElement('small');
+			abbr.innerHTML = 'CM' + ' - ' + data.players.length + ' Players';
+			for(let i = 0; i < data.players.length; i++){
+				players.innerHTML += data.players[i] + ', ';
+			}
+			content.append(abbr, players);
+		});
+		fetch('https://api.chess.com/pub/titled/WCM')
+		.then(res => res.json())
+		.then(data => {
+			const abbr = document.createElement('h3');
+			const players = document.createElement('small');
+			abbr.innerHTML = 'WCM' + ' - ' + data.players.length + ' Players';
+			for(let i = 0; i < data.players.length; i++){
+				players.innerHTML += data.players[i] + ', ';
+			}
+			content.append(abbr, players);
+		});
+	}
+
+	getTitledPlayers();
+
+	function getPlayerInfo(){
+		content.innerHTML = '';
+		//getplayerinfo
+		fetch('https://api.chess.com/pub/player/' + username.value)
+		.then(res => res.json())
+		.then(data => {
+			const flex1 = document.createElement('div');
+			flex1.classList.add('flex1');
+			content.appendChild(flex1);
+
+			const left = document.createElement('div');
+			const right = document.createElement('div');
+			const avatar = document.createElement('img');
+			const name = document.createElement('h3');
+			const titled = document.createElement('p');
+			const streamer = document.createElement('span');
+			const location = document.createElement('p');
+			const followers = document.createElement('p');
+			const status = document.createElement('p');
+			const joined = document.createElement('p');
+			const last_online = document.createElement('p');
+
+			avatar.src = data.avatar;
+			name.innerHTML = '@' + data.username  + ' • ' + data.name;
+			if(data.title != undefined) titled.innerHTML = "<span id='titlebadge'>" + data.title + "</span>";
+			if(data.is_streamer != false ) streamer.innerHTML = "<span id='streamerbadge'>" + "Streamer" + "</span>"
+			location.innerHTML = '<span>Location: </span>' + data.location + ', ' + data.country.slice(-2);
+			followers.innerHTML = '<span>Followers: </span>' + data.followers;
+			status.innerHTML = '<span>Status: </span>' + data.status;
+			joined.innerHTML = '<span>Joined: </span>' + new Date(data.joined * 1000).toString().slice(4, 24);
+			last_online.innerHTML = '<span>Last online: </span>' + new Date(data.last_online * 1000).toString().slice(4, 24);
+
+			flex1.append(left, right);
+			left.appendChild(avatar);
+			right.append(name, titled, location, followers, status, joined, last_online);
+			titled.appendChild(streamer);
+		});
+	}
+
+	function getFullStats(){
+		//getfullstats
+		fetch('https://api.chess.com/pub/player/' + username.value + '/stats' )
+		.then(res => res.json())
+		.then(data => {
+			const gsblock = document.createElement('div');
+			gsblock.id = 'gsblock';
+			gsblock.style.width = '460px';
+			gsblock.style.margin = '0 auto';
+			content.appendChild(gsblock);
+			const gamestatstext = document.createElement('h3');
+			gamestatstext.innerHTML = 'Game Stats';
+			const hr = document.createElement('hr');
+			gsblock.append(gamestatstext, hr);
+
+			const crapid = data.chess_rapid;
+			const crapidd = document.createElement('h3');
+			const crapiddbest = document.createElement('p');
+			const crapiddlast = document.createElement('p');
+			const crapiddrecord = document.createElement('p');
+
+			const cbullet = data.chess_bullet;
+			const cbulletd = document.createElement('h3');
+			const cbulletdbest = document.createElement('p');
+			const cbulletdlast = document.createElement('p');
+			const cbulletdrecord = document.createElement('p');
+
+			const cblitz = data.chess_blitz;
+			const cblitzd = document.createElement('h3');
+			const cblitzdbest = document.createElement('p');
+			const cblitzdlast = document.createElement('p');
+			const cblitzdrecord = document.createElement('p');
+
+			const prush = data.puzzle_rush;
+			const prushd = document.createElement('h3');
+			const prushdbest = document.createElement('p');
+
+			const tactics = data.tactics;
+			const tacticsd = document.createElement('h3');
+			const tacticsdhighest = document.createElement('p');
+			const tacticsdlowest = document.createElement('p');
+
+			crapidd.innerHTML = 'Chess Rapid ';
+			crapiddbest.innerHTML = 'Best: ' + crapid.best.rating + ' (' + new Date(crapid.best.date * 1000).toString().slice(4, 24) + ')';
+			crapiddlast.innerHTML = 'Last: ' + crapid.last.rating + ' (' + new Date(crapid.last.date * 1000).toString().slice(4, 24) + ')';
+			crapiddrecord.innerHTML = 'Record (win/draw/lose): ' + crapid.record.win + '/' + crapid.record.draw + '/' + crapid.record.loss;
+
+			cbulletd.innerHTML = 'Chess Bullet ';
+			cbulletdbest.innerHTML = 'Best: ' + cbullet.best.rating + ' (' + new Date(cbullet.best.date * 1000).toString().slice(4, 24) + ')';
+			cbulletdlast.innerHTML = 'Last: ' + cbullet.last.rating + ' (' + new Date(cbullet.last.date * 1000).toString().slice(4, 24) + ')';
+			cbulletdrecord.innerHTML = 'Record (win/draw/lose): ' + cbullet.record.win + '/' + cbullet.record.draw + '/' + cbullet.record.loss;
+
+			cblitzd.innerHTML = 'Chess Blitz ';
+			cblitzdbest.innerHTML = 'Best: ' + cblitz.best.rating + ' (' + new Date(cblitz.best.date * 1000).toString().slice(4, 24) + ')';
+			cblitzdlast.innerHTML = 'Last: ' + cblitz.last.rating + ' (' + new Date(cblitz.last.date * 1000).toString().slice(4, 24) + ')';
+			cblitzdrecord.innerHTML = 'Record (win/draw/lose): ' + cblitz.record.win + '/' + cblitz.record.draw + '/' + cblitz.record.loss;
+
+			prushd.innerHTML = 'Puzzle Rush ';
+			prushdbest.innerHTML = 'Best: ' + 'Attempts: ' + prush.best.total_attempts + ', ' + 'Score: ' + prush.best.score;
+
+			tacticsd.innerHTML = 'Tactics ';
+			tacticsdhighest.innerHTML = 'Highest: ' + tactics.highest.rating + ' (' + new Date(tactics.highest.date * 1000).toString().slice(4, 24) + ')';
+			tacticsdlowest.innerHTML = 'Lowest: ' + tactics.lowest.rating + ' (' + new Date(tactics.lowest.date * 1000).toString().slice(4, 24) + ')';
+
+			gsblock.append(crapidd, crapiddbest, crapiddlast, crapiddrecord, cbulletd, cbulletdbest, cbulletdlast, cbulletdrecord, cblitzd, cblitzdbest, cblitzdlast, cblitzdrecord, prushd, prushdbest, tacticsd, tacticsdhighest, tacticsdlowest);
+
+		});
+	}
+
+	function getClubs(){
+		fetch('https://api.chess.com/pub/player/' + username.value + '/clubs')
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			const clblock = document.createElement('div');
+			clblock.id = 'clblock';
+			clblock.style.width = '460px';
+			clblock.style.margin = '0 auto';
+			content.appendChild(clblock);
+			const clubstext = document.createElement('h3');
+			clubstext.innerHTML = 'Joined Clubs';
+			const hr = document.createElement('hr');
+			clblock.append(clubstext, hr);
+
+			for(let i = 0; i < data.clubs.length; i++){
+				const flex2 = document.createElement('div');
+				flex2.classList.add('flex2');
+				content.appendChild(flex2);
+				const icon = document.createElement('img');
+				const name = document.createElement('h3');
+				const joined = document.createElement('p');
+				icon.src = data.clubs[i].icon;
+				name.innerHTML = data.clubs[i].name;
+				joined.innerHTML = 'Joined: ' + new Date(data.clubs[i].joined * 1000).toString().slice(4, 15) + ', ' + 'Last activity: ' +  new Date(data.clubs[i].last_activity * 1000).toString().slice(4, 15);
+				flex2.append(icon, name, joined);
+			}
+		});
+	}
+
+	function getMatches(){
+		fetch('https://api.chess.com/pub/player/' + username.value + '/matches')
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+		});
+	}
+</script>
+</body>
+</html>

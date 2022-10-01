@@ -1,0 +1,48 @@
+body{
+	background-color: #121212;
+	color: #eee;
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+}
+
+.content{
+	width: 500px;margin: 2rem auto;
+}
+
+@media only screen and (max-width: 700px){
+	.content{
+		width: 100%;
+	}
+}
+
+hr{
+	background-color: #aaa;
+	border: none;
+	height: 1px;
+	width: 80%;
+}
+
+h2{
+	font-weight: normal;
+}
+
+strong{
+	color: #6ab04c;
+}
+
+em{
+	color: #c7ecee;
+}
+
+a{
+	color: dodgerblue;
+	text-decoration: none;
+}
+
+img{
+	width: 300px;
+}
+
+.about{
+	font-size: 90%;
+}

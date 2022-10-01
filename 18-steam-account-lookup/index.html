@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Steam Account Lookup</title>
+	<style>
+		body{
+			background-color: #141414;
+			color: #ddd;
+			font-family: sans-serif;
+		}
+
+		main{
+			text-align: center;
+		}
+
+		input, button{
+			background-color: #003049;
+			padding: 8px 16px;
+			outline: none;
+			border: none;
+			color: inherit;
+			border: none;
+			font-size: 18px;
+			border-radius: 4px;
+			margin: 1rem 0;
+		}
+
+		button{
+			background-color: #1e6091;
+			transition: .2s ease;
+		}
+
+		button:hover{
+			background-color: #1a759f;
+		}
+
+		a{
+			color: #219ebc;
+			text-decoration: none;
+		}
+
+		.header, .search, .content, .footer{
+			margin: 2rem 0;
+		}
+
+		p{
+			font-size: 14px;
+		}
+
+		footer p{
+			margin: 6px 0;
+		}
+
+	</style>
+</head>
+<body>
+	<main>
+		<div class="header">
+			<h2>Steam Account Lookup</h2>
+		</div>
+		<div class="search">
+			<input type="text" id="id" size="34">
+			<button onclick="getAccountDetails()">Get</button>
+			<br>
+			<img src="steam-id.png">
+		</div>
+		<div class="content">
+			<p id="status"></p>
+		</div>
+		<div class="footer">
+			<footer>
+				<p>MAGABEE &copy 2022</p>
+				<p>with PlayerDB.co API</p>
+			</footer>
+		</div>
+	</main>
+<script>
+	const status = document.getElementById('status');
+	const content = document.querySelector('.content');
+	function getAccountDetails(){
+        content.innerHTML = '';
+		const id = document.getElementById('id').value;
+		fetch('https://playerdb.co/api/player/steam/' + id)
+		.then(res => res.json())
+		.then(data => {
+			if(data.success == true){
+				status.innerHTML = 'Account Found';
+				const plyr = data.data.player;
+				//create content
+				const avatar = document.createElement('img');
+				const username = document.createElement('h3');
+				const vsbltystate = document.createElement('p');
+				const country = document.createElement('p');
+				const prsnstate = document.createElement('p');
+				const prsnstateflags = document.createElement('p');
+				const prflstate = document.createElement('p');
+				const createdat = document.createElement('p');
+
+				avatar.src = plyr.meta.avatarfull;
+				username.innerHTML = plyr.username;
+				vsbltystate.innerHTML = 'Visibility State: ' + plyr.meta.communityvisibilitystate;
+				country.innerHTML = 'Country: ' + plyr.meta.loccountrycode;
+				prsnstate.innerHTML = 'Persona State: ' + plyr.meta.personastate;
+				prsnstateflags.innerHTML = 'Persona State Flags: ' + plyr.meta.personastateflags;
+				prflstate.innerHTML = 'Profile State: ' + plyr.meta.profilestate;
+				createdat.innerHTML = 'Profile Created: ' + new Date(plyr.meta.timecreated * 1000).toString().substring(0, 24);
+
+				content.append(avatar, username, vsbltystate, country, prsnstate, prsnstateflags, prflstate, createdat);
+			}
+			else{
+				status.innerHTML = 'Account Not Found';
+				return false;
+			}
+		});
+	}
+</script>
+</body>
+</html>

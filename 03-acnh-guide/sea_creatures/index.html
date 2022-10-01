@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ACNH Guide - Sea Creatures</title>
+	<style>
+		body{text-align: center;font-family: 'Roboto', sans-serif;background-color: #121212;color: #eee;margin: 0;}
+		.nav, .about{width: 100%;text-align: left;background-color: #27ae60B3;padding: 0.5rem;box-sizing: border-box;}
+		.content{margin: 1rem 0;}
+		table {font-family: 'Roboto', sans-serif;border-collapse: collapse;width: 80%;margin: 0 auto;font-size: 15px;}
+		td, th {border: 1px solid #707070;text-align: left;padding: 4px 8px;}
+		table img{width: 50px;}
+		h2, h3{font-weight: normal;margin: 0.5rem;}
+		.about{font-size: 80%;text-align: center;}
+	</style>
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<h2>ACNH Guide</h2>
+		</div>
+		<div class="content">
+			<h3>Sea Creatures</h3>
+			<table id="table">
+				<tr>
+					<th>No</th>
+					<th>Icon</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Speed</th>
+					<th>Availability</th>
+				</tr>
+			</table>
+		</div>
+		<div class="about">
+			<h3>ACNH Guide</h3>
+			<p>magabee - acnhapi.com &copy 2022</p>
+			<p>this app uses 3rd party api of acnhapi. data doesn't belong to us.</p>
+		</div>
+	</main>
+<script>
+	const table = document.getElementById('table');
+	const td = table.getElementsByTagName('td');
+	const th = table.getElementsByTagName('th');
+	fetch('https://acnhapi.com/v1/sea')
+	.then(res => res.json())
+	.then(json => {
+		console.log(json);
+		const data = Object.values(json).filter(n => n = 'bitterling');
+		console.log(data);
+		
+		for(let i = 0; i < data.length; i++){
+			const ntr = document.createElement('tr');
+			const no = document.createElement('td');
+			const icontd = document.createElement('td');
+			const icon = document.createElement('img');
+			const name = document.createElement('td');
+			const price = document.createElement('td');
+			const speed = document.createElement('td');
+			const availability = document.createElement('td');
+			no.innerHTML = i;
+			icon.src = data[i].icon_uri;
+			name.innerHTML = data[i].name['name-USen'];
+			price.innerHTML = data[i].price;
+			speed.innerHTML = data[i].speed;
+			if(data[i].availability.isAllYear == true){
+				availability.innerHTML = 'All year';
+			}
+			else{
+				availability.innerHTML = 'S: ' + data[i].availability['month-southern'] + '<br>' + 'N: ' + data[i].availability['month-northern'];
+			}
+			
+			table.appendChild(ntr);
+			ntr.appendChild(no);
+			ntr.appendChild(icontd);
+			icontd.appendChild(icon);
+			ntr.append(name, price, speed, availability);
+		}
+	});
+</script>
+</body>
+</html>

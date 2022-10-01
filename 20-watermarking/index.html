@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Watermark On Image</title>
+	<style>
+		body{background-color: #141414;color: #ddd;margin: 0;font-family: sans-serif;}
+		main{text-align: center;box-sizing: border-box;}
+		canvas{max-height: 54vh;display: block;margin: 1rem auto;max-width: 100%;}
+		a{color: #a18a4d;text-decoration: none}
+		.content{margin: 2rem 0;}
+		input, button{font-size: 16px;border: none;outline: none;padding: 6px 12px;border-radius: 6px;background-color: #ddd;display: block;margin: 6px auto;}
+		input{width: 300px;}
+		button{width: 200px;}
+		button{background-color: #27ae60;cursor: pointer;transition: .2s ease;}
+		button:hover{background-color: #2ecc71;}
+	</style>
+</head>
+<body>
+
+<main>
+	<div class="header">
+		<h2>Watermarking</h2>
+	</div>
+	<div class="content">
+		<div class="setup">
+			<input type="url" id="baseimgurl" placeholder="Image URL">
+			<input type="url" id="watermarkurl" placeholder="Watermark URL (1:1)">
+			<button onclick="done()">Done</button>
+		</div>
+		<div class="canvas">
+			<canvas id="canvas">	
+		</div>
+	</div>
+	<div class="footer">
+		<footer>
+			<p><a href="http://magabee.rf.gd">MAGABEE</a> &copy2022</p>
+		</footer>
+	</div>
+</main>
+
+<script>
+	const content = document.querySelector('.content');
+	var canvas = document.getElementById('canvas'),
+	ctx = canvas.getContext('2d');
+	let cvw;
+	let cvh;
+	function done(){
+		const baseImgUrl = document.getElementById('baseimgurl').value;
+		const watermarkUrl = document.getElementById('watermarkurl').value;
+
+		baseImg = new Image();
+		baseImg.src = baseImgUrl;
+		baseImg.onload = function(){
+			canvas.width = baseImg.width;
+			canvas.height = baseImg.height;
+			ctx.drawImage(baseImg, 0, 0);
+			cvw = canvas.width;
+			cvh = canvas.height;
+		}
+
+		watermark = new Image();
+		watermark.src = watermarkUrl;
+		watermark.onload = function(){
+			ctx.drawImage(watermark, cvw - 84, cvh - 84, 64, 64);
+		}
+	}
+</script>
+</body>
+</html>

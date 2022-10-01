@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>TCG Pokemon Card Guide</title>
+	<style>
+		body{text-align: center;font-family: 'Roboto', sans-serif;background-color: #121212;color: #eee;margin: 0;}
+		.nav, .about{width: 100%;text-align: left;background-color: #34495e;padding: 0.5rem;box-sizing: border-box;}
+		.content{margin: 2rem;}
+		table {font-family: 'Roboto', sans-serif;border-collapse: collapse;width: 80%;margin: 0 auto;font-size: 15px;}
+		td, th {border: 1px solid #707070;text-align: left;padding: 4px 8px;}
+		table img{width: 50px;}
+		h2, h3, h4{font-weight: normal;margin: 0.5rem;}
+		.about{font-size: 80%;text-align: center;}
+		p{font-size: 14px;}
+		input, button{font-family: inherit;border: none;background-color: #27ae60BB;color: #ddd;padding: 6px 10px;border-radius: 4px;outline: none;}
+		input::placeholder{color: #ccc;}
+	</style>
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<h2>TCG Pokemon Card Guide</h2>
+		</div>
+		<div class="search">
+			<input type="text" id="id_query" placeholder="search by id">
+			<button onclick="search()">Get</button>
+		</div>
+		<div class="content">
+			<table id="table">
+				<tr>
+					<th>No</th>
+					<th>Name</th>
+					<th>ID</th>
+					<th>Local ID</th>
+				</tr>
+			</table>
+		</div>
+		<div class="about">
+			<h3>TCG Pokemon Card Guide</h3>
+			<p>magabee - tcgdex.net &copy 2022</p>
+		</div>
+	</main>
+<script>
+	const table = document.getElementById('table');
+	fetch('https://api.tcgdex.net/v2/en/cards')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.length; i++){
+			const ntr = document.createElement('tr');
+			const no = document.createElement('td');
+			const name = document.createElement('td');
+			const id = document.createElement('td');
+			const local_id = document.createElement('td');
+			no.innerHTML = i + 1;
+			name.innerHTML = data[i].name;
+			id.innerHTML = data[i].id;
+			local_id.innerHTML = data[i].localId;
+			table.appendChild(ntr);
+			ntr.append(no, name, id, local_id);
+		}
+	});
+	function search(){
+		document.querySelector('.content').innerHTML = '';
+		const id_query = document.getElementById('id_query').value;
+		fetch('https://api.tcgdex.net/v2/en/cards/' + id_query)
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			const name = document.createElement('h3');
+			const rarity = document.createElement('h4');
+			const stage = document.createElement('p');
+			const hp = document.createElement('p');
+			const attack = document.createElement('p');
+			const weaknesses = document.createElement('p');
+			const set = document.createElement('p');
+			const setimg = document.createElement('img');
+			name.innerHTML = data.name;
+			rarity.innerHTML = data.rarity + ' - ' + data.types[0];
+			stage.innerHTML = 'Stage: ' + data.stage;
+			hp.innerHTML = '❤️ HP: ' + data.hp;
+			attack.innerHTML = '⚔️ Attack: ' + `(Damage: ${data.attacks[0].damage}) ` + data.attacks[0].name + ' - ' + data.attacks[0].effect;
+			weaknesses.innerHTML = 'Weakness: ' + data.weaknesses[0].type + ' - ' + data.weaknesses[0].value;
+			set.innerHTML = 'Set: ' + data.set.name + ` (${data.set.cardCount.official} Cards)`;
+			setimg.src = data.set.logo;
+			document.querySelector('.content').append(name, rarity, stage, hp, attack, weaknesses, set, setimg);
+		})
+	}
+</script>
+</body>
+</html>

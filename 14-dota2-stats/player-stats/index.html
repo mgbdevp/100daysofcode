@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.6">
+	<title>Dota2 Player Stats</title>
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<div>
+				<img src="dota2-logo.jpg">
+				<h2>Dota2 Stats</h2>
+			</div>
+			<div>
+				<input type="text" id="id" placeholder="Search player ID">
+				<button onclick="playerStat();">Get</button>
+			</div>
+		</div>
+		<div class="content">
+			<p>You are looking at player stats page. <a href="../metadata">Meta data</a> page here</p>
+			<h2>Pro Players</h2>
+			<table id="table">
+				<tr>
+					<th>ID</th>
+					<th>Avatar</th>
+					<th>Name</th>
+					<th>Persona Name</th>
+					<th>Country</th>
+				</tr>
+			</table>
+		</div>
+		<footer id="footer">
+			<h3>Dota2 Stats</h3>
+			<p>MAGABEE &copy2022</p>
+			<p>Made with opendota.com Dota 2 API</p>
+		</footer>
+	</main>
+<script>
+	const content = document.querySelector('.content');
+	const table = document.getElementById('table');
+	const id = document.getElementById('id');
+
+	function proPlayers(){
+		fetch('https://api.opendota.com/api/proPlayers')
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			for(let i = 0; i < data.length; i++){
+			const ntr = document.createElement('tr');
+			const id = document.createElement('td');
+			const avatartd = document.createElement('td');
+			const avatar = document.createElement('img');
+			const name = document.createElement('td');
+			const personaname = document.createElement('td');
+			const country = document.createElement('td');
+
+			id.innerHTML = data[i].account_id;
+			avatar.src = data[i].avatar;
+			name.innerHTML = data[i].name;
+			personaname.innerHTML = data[i].personaname;
+			country.innerHTML = data[i].loccountrycode;
+
+			table.appendChild(ntr);
+			ntr.appendChild(id);
+			ntr.appendChild(avatartd);
+			avatartd.appendChild(avatar);
+			ntr.append(name, personaname, country);
+		}
+		});
+	}
+	proPlayers();
+
+	function playerStat(){
+		table.style.width = '90%';
+		table.innerHTML = '<tr><th>ID</th><th>Avatar</th><th>Name</th><th>Persona Name</th><th>Country</th><th>LeaderB Rank</th><th>Rank Tier</th><th>Solo Cmp Rank</th><th>Cmp Rank</th><th>MMR Estimate</th></tr>';
+		if(content.getElementsByTagName('h2')[0] != undefined) content.getElementsByTagName('h2')[0].remove();
+		fetch('https://api.opendota.com/api/players/' + id.value)
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			const ntr = document.createElement('tr');
+			const id = document.createElement('td');
+			const avatartd = document.createElement('td');
+			const avatar = document.createElement('img');
+			const name = document.createElement('td');
+			const personaname = document.createElement('td');
+			const country = document.createElement('td');
+			const leaderbrank = document.createElement('td');
+			const ranktier = document.createElement('td');
+			const solocmprank = document.createElement('td');
+			const cmprank = document.createElement('td');
+			const mmrestimate = document.createElement('td');
+
+			id.innerHTML = data.profile.account_id;
+			avatar.src = data.profile.avatarmedium;
+			name.innerHTML = data.profile.name;
+			personaname.innerHTML = data.profile.personaname;
+			country.innerHTML = data.profile.loccountrycode;
+			leaderbrank.innerHTML = data.leaderboard_rank;
+			ranktier.innerHTML = data.rank_tier;
+			solocmprank.innerHTML = data.solo_competitive_rank;
+			cmprank.innerHTML = data.competitive_rank;
+			mmrestimate.innerHTML = data.mmr_estimate.estimate;
+
+			table.appendChild(ntr);
+			ntr.appendChild(id);
+			ntr.appendChild(avatartd);
+			avatartd.appendChild(avatar);
+			ntr.append(name, personaname, country, leaderbrank, ranktier, solocmprank, cmprank, mmrestimate);
+		})
+	}
+</script>
+</body>
+</html>

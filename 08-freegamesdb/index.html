@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>FreeGamesDB</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<h2>FreeGamesDB</h2>
+		</div>
+		<div class="search">
+			<p>Platform</p>
+			<p>Category</p>
+			<p>Sort by</p>
+			<select id="platform" onchange="getGames()">
+				<option value="all" selected>All</option>
+				<option value="pc">PC</option>
+				<option value="browser">Browser</option>
+			</select>
+			<select id="category" onchange="getGames()">
+				<option value="" selected>category</option>
+				<option value="mmorpg">mmorpg</option>
+				<option value="shooter">shooter</option>
+				<option value="strategy">strategy</option>
+				<option value="moba">moba</option>
+				<option value="racing">racing</option>
+				<option value="sports">sports</option>
+				<option value="social">social</option>
+				<option value="sandbox">sandbox</option>
+				<option value="open-world">open-world</option>
+				<option value="survival">survival</option>
+				<option value="pvp">pvp</option>
+				<option value="pve">pve</option>
+				<option value="pixel">pixel</option>
+				<option value="voxel">voxel</option>
+				<option value="zombie">zombie</option>
+				<option value="turn-based">turn-based</option>
+				<option value="first-person">first-person (fps)</option>
+				<option value="third-person">third-person</option>
+				<option value="top-down">top-down</option>
+				<option value="tank">tank</option>
+				<option value="space">space</option>
+				<option value="sailing">sailing</option>
+				<option value="side-scroller">side-scroller</option>
+				<option value="superhero">superhero</option>
+				<option value="permadeath">permadeath</option>
+				<option value="card">card</option>
+				<option value="battle-royale">battle-royale</option>
+				<option value="mmo">mmo</option>
+				<option value="mmofps">mmofps</option>
+				<option value="mmotps">mmotps</option>
+				<option value="3d">3d</option>
+				<option value="2d">2d</option>
+				<option value="anime">anime</option>
+				<option value="fantasy">fantasy</option>
+				<option value="sci-fi">sci-fi</option>
+				<option value="fighting">fighting</option>
+				<option value="action-rpg">action-rpg</option>
+				<option value="action">action</option>
+				<option value="military">military</option>
+				<option value="martial-arts">martial-arts</option>
+				<option value="flight">flight</option>
+				<option value="low-spec">low-spec</option>
+				<option value="tower-defense">tower-defense</option>
+				<option value="horror">horror</option>
+				<option value="mmorts">mmorts</option>
+			</select>
+			<select id="sortby" onchange="getGames()">
+				<option value="alphabetical">alphabetical</option>
+				<option value="release-date">release-date</option>
+				<option value="popularity" selected>popularity</option>
+				<option value="relevance">relevance</option>
+			</select>
+		</div>
+		<div class="content">
+			<small>Total: 369 ±</small>
+			<small>Showing: 20</small>
+			<small id="page"></small>
+			<div class="flex">
+			</div>
+			<button onclick="page--;var_i = var_i - 20; less_i = less_i - 20;getGames()">🡨</button>
+			<button onclick="page++;var_i = var_i + 20; less_i = less_i + 20;getGames()">🡪</button>
+		</div>
+		<div class="about">
+			<h3>FreeGamesDB</h3>
+			<p>magabee - freetogame.com &copy 2022</p>
+			<p>this app uses 3rd party api of freetogame.</p>
+		</div>
+	</main>
+<script>
+	const flex = document.querySelector('.flex');
+	const pagetxt = document.getElementById('page');
+	var page = 1;
+	var var_i = 0;
+	var less_i = 20;
+	function getGames(){
+		pagetxt.innerHTML = 'Page: ' + page;
+		flex.innerHTML = '';
+		let url;
+		const platform = document.getElementById('platform').value;
+		const category = document.getElementById('category').value;
+		const sortby = document.getElementById('sortby').value;
+		if(category == ''){
+			url = `https://free-to-play-games-database.p.rapidapi.com/api/games?platform=${platform}&sort-by=${sortby}`;
+			
+		}
+		else{
+			url = `https://free-to-play-games-database.p.rapidapi.com/api/games?platform=${platform}&category=${category}&sort-by=${sortby}`;
+		}
+		const options = {
+			method: 'GET',
+			headers: {
+				'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
+				'X-RapidAPI-Key': 'de4abbd0f3mshe86282d7ecb4a22p1b147bjsn0acc014da5df'
+			}
+		};
+		fetch(url, options)
+		.then(res => res.json())
+		.then(data => {
+			for(let i = var_i; i < less_i; i++){
+				const card = document.createElement('div');
+				const cardbottom = document.createElement('div');
+				card.classList.add('card');
+				cardbottom.classList.add('card-bottom');
+				const thumbnail = document.createElement('img');
+
+				const title = document.createElement('h3');
+				const freebadge = document.createElement('span');
+				freebadge.classList.add('badge');
+				const devandpub = document.createElement('small');
+				const description = document.createElement('p');
+				const release_date = document.createElement('span');
+				const genre = document.createElement('span');
+				const platform = document.createElement('img');
+				genre.classList.add('badge');
+
+				thumbnail.src = data[i].thumbnail;
+				title.innerHTML = data[i].title;
+				freebadge.innerHTML = 'FREE';
+				devandpub.innerHTML = data[i].developer + ' & ' + data[i].publisher;
+				description.innerHTML = data[i].short_description;
+				release_date.innerHTML = data[i].release_date;
+				genre.innerHTML = data[i].genre;
+				if(data[i].platform == 'Web Browser') platform.src = 'chrome-icon.png';
+				else platform.src = 'windows-icon.png';
+				flex.appendChild(card);
+				card.append(thumbnail, cardbottom);
+				cardbottom.append(title, freebadge, devandpub, description, release_date, genre, platform);
+			}
+		});
+	}
+	getGames();
+</script>
+</body>
+</html>

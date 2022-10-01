@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.75">
+	<title>C:Disney Char's</title>
+	<style>
+		body{text-align: center;font-family: 'Roboto', sans-serif;background-color: #121212;color: #eee;margin: 0;}
+		.nav, .about{width: 100%;text-align: left;background-color: #5ca999CC;padding: 0.5rem;box-sizing: border-box;}
+		.content{margin: 2rem 0;}
+		table {font-family: 'Roboto', sans-serif;border-collapse: collapse;width: 90%;margin: 0 auto;font-size: 15px;}
+		td, th {border: 1px solid #707070;text-align: left;padding: 4px 8px;word-spacing: 2px;line-height: 140%;width: 260px;}
+		td:first-child, th:first-child{width: auto;}
+		table img{width: 100px;}
+		h2, h3, h4{font-weight: normal;margin: 0.5rem;}
+		.about{font-size: 80%;text-align: center;}
+	</style>
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<h2>C:Disney Char's</h2>
+		</div>
+		<div class="content">
+			<h4 id="page"></h4>
+			<table id="table">
+
+			</table>
+			<div class="pagination">
+				<button onclick="javascript:page--;getData()"><<</button>
+				<button onclick="javascript:page++;getData()">>></button>
+			</div>
+		</div>
+		<div class="about">
+			<h3>Disney Char's</h3>
+			<p>magabee - disneyapi.dev &copy 2022</p>
+		</div>
+	</main>
+<script>
+	const table = document.getElementById('table');
+	const h4 = document.getElementById('page');
+	let page = 1;
+	function getData(){
+		table.innerHTML = '<tr><th>Image</th><th>Name</th><th>TV Shows</th><th>Video Games</th><th>Short Films</th></tr>';
+		h4.innerHTML = 'page: ' + page + '<br>' + 'total page: 149';
+		fetch('https://api.disneyapi.dev/characters?page=' + page)
+		.then(res => res.json())
+		.then(ldata => {
+			const data = ldata.data;
+			for(let i = 0; i < data.length; i++){
+				const ntr = document.createElement('tr');
+				const imagetd = document.createElement('td');
+				const image = document.createElement('img');
+				const name = document.createElement('td');
+				const tvshows = document.createElement('td');
+				const videogames = document.createElement('td');
+				const shortfilms = document.createElement('td');
+				image.src = data[i].imageUrl;
+				name.innerHTML = data[i].name;
+				for(let z = 0; z < data[i].tvShows.length; z++){
+					tvshows.innerHTML += data[i].tvShows[z] + ', ';
+				}
+				for(let z = 0; z < data[i].videoGames.length; z++){
+					videogames.innerHTML += data[i].videoGames[z] + ', ';
+				}
+				for(let z = 0; z < data[i].shortFilms.length; z++){
+					shortfilms.innerHTML += data[i].shortFilms[z] + ', ';
+				}
+				table.appendChild(ntr);
+				ntr.appendChild(imagetd);
+				imagetd.appendChild(image);
+				ntr.append(name, tvshows, videogames, shortfilms);
+			}
+		});
+	}
+	getData();
+</script>
+</body>
+</html>

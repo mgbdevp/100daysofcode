@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Steam Static OpenData</title>
+	<style>
+		body{background-color: black;color: #ddd;font-family: 'Calibri', sans-serif;}
+		main{width: 80%;margin: 1rem auto;}
+		p{margin: 0.3rem 0;font-size: 16px;margin-left: 1rem;}
+		.cat p{display: inline;}
+		.cat img{width: 32px;}
+		a{color: gold;text-decoration: none;}
+		#goup{display: none;position: fixed;bottom: 20px;right: 20px;background-color: #e67e22;font-size: 20px;border-radius: 12px;padding: 8px 16px;color: black;}
+	</style>
+</head>
+<body>
+	<main>
+		<div class="nav">
+			content: 
+			<a href="#online_users">Online users</a> | 
+			<a href="#store_categories">Store categories</a> | 
+			<a href="#store_tags">Store tags</a> | 
+			<a href="#supported_countries">Supported countries</a> | 
+			<a href="#game_genres">Game Genres</a> | 
+		</div>
+		<div id="online_users">
+			<h3>Online users</h3>
+		</div>
+		<div id="store_categories">
+			<h3>Store categories</h3>
+		</div>
+		<div id="store_tags">
+			<h3>Store tags</h3>
+		</div>
+		<div id="supported_countries">
+			<h3>Supported countries</h3>
+		</div>
+		<div id="game_genres">
+			<h3>Game Genres</h3>
+		</div>
+	</main>
+	<a href="#online_users" onclick="document.getElementById('goup').style.display = 'none';" id="goup">Go UP</a>
+<script>
+	window.onwheel = e => {
+  		if(e.deltaY >= 100){
+   			document.getElementById('goup').style.display = 'block';
+   		}
+   		else{
+   			document.getElementById('goup').style.display = 'none';
+   		}
+  	}
+	const online_users = document.getElementById('online_users');
+	const store_categories = document.getElementById('store_categories');
+	const store_tags = document.getElementById('store_tags');
+	const supported_countries = document.getElementById('supported_countries');
+	const game_genres = document.getElementById('game_genres');
+	//online users
+	fetch('https://api.codetabs.com/v1/proxy?quest=https://www.valvesoftware.com/about/stats')
+	.then(res => res.json())
+	.then(data => {
+		const ingame = document.createElement('p');
+		const online = document.createElement('p');
+		ingame.innerHTML = '🎮 In game: ' + data.users_ingame;
+		online.innerHTML = '🟢 Online: ' + data.users_online;
+		online_users.append(ingame, online);
+	});
+
+	//store categories
+	fetch('https://api.codetabs.com/v1/proxy?quest=https://store.steampowered.com/actions/ajaxgetstorecategories')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.length; i++){
+			const catdiv = document.createElement('div');
+			catdiv.classList.add('cat');
+			store_categories.appendChild(catdiv);
+			const icon = document.createElement('img');
+			const name = document.createElement('p');
+			icon.src = 'https://steamstore-a.akamaihd.net/public/images/' + data[i].image_path;
+			name.innerHTML = data[i].name;
+			catdiv.append(icon, name);
+		}
+	});
+
+	//store tags
+	fetch('https://api.codetabs.com/v1/proxy?quest=https://store.steampowered.com/actions/ajaxgetstoretags')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.tags.length; i++){
+			const name = document.createElement('p');
+			name.innerHTML = data.tags[i].name;
+			store_tags.appendChild(name);
+		}
+	});
+	//supported countries
+	fetch('https://api.codetabs.com/v1/proxy?quest=https://store.steampowered.com/api/checkoutcountrydata/?cc=us&l=english')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.countries.length; i++){
+			const label = document.createElement('p');
+			label.innerHTML = data.countries[i].label;
+			supported_countries.appendChild(label);
+		}
+	});
+	fetch('https://api.codetabs.com/v1/proxy?quest=https://store.steampowered.com/api/getgenrelist')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.genres.length; i++){
+			const name = document.createElement('p');
+			name.innerHTML = data.genres[i].name;
+			game_genres.appendChild(name);
+		}
+	});
+</script>
+</body>
+</html>

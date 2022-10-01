@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ACNH Guide - Images</title>
+	<style>
+		body{text-align: center;font-family: 'Roboto', sans-serif;background-color: #101010;color: #eee;margin: 0;}
+		.nav, .about{width: 100%;text-align: left;background-color: #27ae60B3;padding: 0.5rem;box-sizing: border-box;}
+		.content{margin: 2rem 0;}
+		h2, h3{font-weight: normal;margin: 0.5rem;}
+		.about{font-size: 80%;text-align: center;}
+		img{width: 120px;}
+	</style>
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<h2>ACNH Guide</h2>
+		</div>
+		<div class="content">
+			<h3>Images</h3>
+			<h3>Villagers</h3>
+			<div class="villagers"></div>
+		</div>
+		<div class="about">
+			<h3>ACNH Guide</h3>
+			<p>magabee - acnhapi.com &copy 2022</p>
+			<p>this app uses 3rd party api of acnhapi. data doesn't belong to us.</p>
+		</div>
+	</main>
+<script>
+	const villagers = document.querySelector('.villagers');
+	for(let i = 1; i <= 391; i++){
+		const villagerimage = document.createElement('img');
+		villagerimage.src = 'https://acnhapi.com/v1/images/villagers/' + i;
+		villagers.appendChild(villagerimage);
+	}
+</script>
+</body>
+</html>

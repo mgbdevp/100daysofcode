@@ -1,0 +1,98 @@
+body{
+	margin: 0;
+	background-color: #15181c;
+	color: #ddd;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+h2,h3{
+	margin: 0;
+}
+
+.nav, footer{
+	width: 100%;
+	padding: 1rem 2rem;
+	box-sizing: border-box;
+}  
+
+.nav, footer{
+	width: 100%;
+	background-color: #21252b;
+}
+
+.nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.nav div:first-child{
+	display: flex;
+	align-items: center;
+}
+
+.nav h2{
+	margin-left: 0.5rem;
+}
+
+input, button{
+	font-family: inherit;
+	font-size: 16px;
+	background-color: #1e2124;
+	border: 1px solid #414a4c;
+	color: inherit;
+	border-radius: 6px;
+	outline: none;
+	padding: 4px 12px;
+	transition: 0.2s ease-out;
+}
+
+button{
+	background-color: #7289daCC;
+	border: 1px solid #596fbdCC;
+}
+
+button:hover{
+	background-color: #1e2124;
+}
+
+.content{
+	width: 80%;
+	margin: 1rem auto;
+}
+
+footer{
+	text-align: center;
+}
+
+.content p{
+	color: #bbb;
+	line-height: 150%;
+}
+
+.content span{
+	color: #ddd;
+}
+
+
+h2, h3{
+	font-weight: normal;
+}
+
+a{
+	color: dodgerblue;
+}
+
+table{
+	margin: 1rem auto;
+	width: 70%;
+	text-align: center;
+}
+
+th{
+	margin: 1rem 0;
+}
+
+th, td{
+	margin: 0 0.5rem;
+}

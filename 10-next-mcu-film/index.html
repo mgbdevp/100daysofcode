@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Next MCU Film</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+</head>
+<body>
+	<main>
+		<div class="header">
+			<h1>When is the next MCU film?</h1>
+			<hr>
+		</div>
+		<div class="content"></div>
+		<div class="about">
+			<hr>
+			<p>MAGABEE &copy 2022</p>
+			<p><a href="https://github.com/DiljotSG/MCU-Countdown/tree/develop">MCU-Countdown</a> API</p>
+		</div>
+	</main>
+<script>
+	const content = document.querySelector('.content');
+	let url = 'https://www.whenisthenextmcufilm.com/api';
+	function getfilm(){
+		console.log(url);
+		content.innerHTML = '';
+		fetch(url)
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			document.title = data.title;
+			const title = document.createElement('h2');
+			const release_date = document.createElement('p');
+			const type = document.createElement('p');
+			const poster_img = document.createElement('img');
+			const next_film = document.createElement('p');
+			title.innerHTML = '<strong>' + data.title + '</strong>' + ' releases in ' + '<em>' + data.days_until + ' days' + '</em>';
+			release_date.innerHTML = 'Release date: ' + data.release_date;
+			type.innerHTML = 'Type: ' + data.type;
+			poster_img.src = data.poster_url;
+			next_film.innerHTML = 'Next film: ' + `<a onclick="url='https://www.whenisthenextmcufilm.com/api?date=${data.release_date}';getfilm()" href='#'>${data.following_production.title}</a>`;
+			content.append(title, release_date, type, poster_img, next_film);
+		});
+	}
+	getfilm();
+</script>
+</body>
+</html>

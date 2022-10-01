@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.9">
+	<title>PUBG Stats</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" href="favicon.png">
+</head>
+<body>
+	<main>
+		<div class="dv-header">
+			<header>
+				<h2>PUBG Stats</h2>
+				<div id="h-links">
+					<a href="#" id="lnk-active">Home</a>
+					<a href="#ldboard" onclick="activeLdb()">Leaderboards</a>
+				</div>
+				<div id="h-input">
+					<input type="text" placeholder="Search PUBG Name" id="username1">
+					<button onclick="getPlayerStats()">GO</button>
+				</div>
+			</header>
+		</div>
+		<div class="content">
+			<div id="c-imgbg">
+				<h1>PUBG Stats</h1>
+				<p style="font-weight: bold;">By MAGABEE</p>
+				<div id="i-input">
+					<input type="text" placeholder="Search PUBG Name" size="32" id="username2">
+					<button onclick="getPlayerStats()">GO</button>
+				</div>
+			</div>
+			<div class="bottom">
+				<div id="stats">
+					<div id="ldboard">
+		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<footer>
+				<p>© 2022 MAGABEE</p>
+				<p>Data based on PUBG Corporation. Made with PUBG Developer API</p>
+				<small>51 HTML, 217 CSS, 415 JS line of code written</small>
+			</footer>
+		</div>
+	</main>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MC Server Status</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<img src="mc-logo.png" width="36" height="36">
+			<h2>MC Server Status</h2>
+		</div>
+		<div class="search">
+			<h3>Get server status by server address</h3>
+			<input type="text" id="address" placeholder="adress (hypixel.net / 172.65.128.35)"></input>
+			<button onclick="getStatus()">Get Status</button>
+		</div>
+		<div class="content">
+			
+		</div>
+		<div class="about">
+			<p style="margin: 0">magabee & m3o.com &copy 2022</p>
+			<small>made with 3rd party minecraft api of m3o.com</small>
+		</div>
+	</main>
+<script>
+	const content = document.querySelector('.content');
+	const address = document.getElementById('address');
+  	function getStatus(){
+  		fetch(`https://api.m3o.com/v1/minecraft/Ping?address=${address.value}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer MDgzMTljZTItMGM1NS00MWNmLWI2ZTctYzZkMDI1ZjQ5YTc3'
+			}
+		})
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			const icon = document.createElement('img');
+			const server = document.createElement('h3');
+			const motd = document.createElement('p');
+			const players = document.createElement('p');
+			const version = document.createElement('p');
+			icon.src = data.favicon;
+			server.innerHTML = address.value;
+			motd.innerHTML = 'MOTD: ' + '<span>' + data.motd + '</span>';
+			players.innerHTML = 'Players: ' + '<span>' + data.players + '/' + data.max_players + '</span>';
+			version.innerHTML = 'Version: ' + '<span>' + data.version + '</span>';
+			content.append(icon, server, motd, players, version);
+		});
+  	}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MC Server Status</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<img src="mc-logo.png" width="36" height="36">
+			<h2>MC User Face</h2>
+		</div>
+		<div class="search">
+			<h3>Get skins and faces by user uuid</h3>
+			<p>Use <a href="https://minecraftuuid.com">minecraftuuid.com</a> to find UUID of a username</a></p>
+			<input type="text" id="uuid" placeholder="Enter a valid UUID"></input>
+			<button onclick="getInfo()">Go!</button>
+		</div>
+		<div class="content">
+			<div class="avatar">
+				<p style="display: none" id="avatarpr">Avatar</p>
+			</div>
+			<div class="head_render">
+				<p style="display: none" id="head_renderpr">Head Render</p>
+			</div>
+			<div class="body_render">
+				<p style="display: none" id="body_renderpr">Body Render</p>
+			</div>
+		</div>
+		<div class="about">
+			<p style="margin: 0">magabee & crafatar.com &copy 2022</p>
+			<small>made with 3rd party minecraft api of crafatar.com</small>
+		</div>
+	</main>
+<script>
+	const uuid = document.getElementById('uuid');
+	const avatardv = document.querySelector('.avatar');
+	const head_renderdv = document.querySelector('.head_render');
+	const body_renderdv = document.querySelector('.body_render');
+  	function getInfo(){
+		const avatar = document.createElement('img');
+		const head_render = document.createElement('img');
+		const body_render = document.createElement('img');
+		avatar.src = 'https://crafatar.com/avatars/' + uuid.value;
+		head_render.src = 'https://crafatar.com/renders/head/' + uuid.value;
+		body_render.src = 'https://crafatar.com/renders/body/' + uuid.value;
+		avatardv.appendChild(avatar);
+		document.getElementById('avatarpr').style.display = 'block';
+		head_renderdv.appendChild(head_render);
+		document.getElementById('head_renderpr').style.display = 'block';
+		body_renderdv.appendChild(body_render);
+		document.getElementById('body_renderpr').style.display = 'block';
+  	}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GameDealz</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<h2>GameDealz</h2>
+		</div>
+		<div class="search">
+
+			<p>Less than $</p>
+			<p>Store</p>
+			<p>Sort by</p>
+			<p></p>
+			<input type="text" id="upperPrice" placeholder="15" value="15" size="4">
+			<select id="store">
+				<option value="">Select store</option>
+				<option value="1" selected>Steam</option>
+				<option value="25">Epic Games Store</option>
+				<option value="7">GOG</option>
+				<option value="8">Origin</option>
+				<option value="11">Humble Store</option>
+				<option value="3">GreenManGaming</option>
+				<option value="2">GamersGate</option>
+				<option value="6">Direct2Drive</option>
+				<option value="13">Uplay</option>
+				<option value="15">Fanatical</option>
+				<option value="21">WinGameStore</option>
+				<option value="23">GameBillet</option>
+				<option value="24">Voidu</option>
+				<option value="27">Gamesplanet</option>
+				<option value="28">Gamesload</option>
+				<option value="29">2Game</option>
+				<option value="30">IndieGala</option>
+				<option value="31">Blizzard Shop</option>
+				<option value="32">AllYouPlay</option>
+				<option value="33">DLGamer</option>
+			</select>
+			<select id="sortBy">
+				<option value="Deal Rating" checked>Deal Rating</option>
+				<option value="Title">Title</option>
+				<option value="Savings">Savings</option>
+				<option value="Price">Price</option>
+				<option value="Metacritic">Metacritic</option>
+				<option value="Reviews">Reviews</option>
+				<option value="Store">Store</option>
+				<option value="recent">recent</option>
+			</select>
+			<button onclick="getDeals()">Get</button>
+			
+		</div>
+		<div class="content">
+			<div class="onwch"></div>
+			<div class="flex">
+				
+			</div>
+			<button onclick="page--;console.log(page);getDeals()"><<</button>
+			<button onclick="page++;console.log(page);getDeals()">>></button>
+			<p id="whichpage"></p>
+		</div>
+		<div class="about">
+			<h3>GameDealz</h3>
+			<p>magabee - cheapshark.com &copy 2022</p>
+			<p>this app uses 3rd party api of cheapshark.</p>
+		</div>
+	</main>
+<script>
+	const onwch = document.querySelector('.onwch');
+	const flex = document.querySelector('.flex');
+	const upperPrice = document.getElementById('upperPrice');
+	const storeID = document.getElementById('store');
+	const sortBy = document.getElementById('sortBy');
+	let page = 0;
+	const whichpage = document.getElementById('whichpage');
+	whichpage.innerHTML = 'Page: 1';
+	function getDeals(){
+		flex.innerHTML = '';
+		onwch.innerHTML = '';
+		const onstore = document.createElement('p');
+		onstore.innerHTML = 'on ' + storeID.options[storeID.selectedIndex].text;
+		onwch.appendChild(onstore); 
+		fetch(`https://www.cheapshark.com/api/1.0/deals?storeID=${storeID.value}&upperPrice=${upperPrice.value}&sortBy=${sortBy.value}&pageSize=30&pageNumber=${page}`)
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			whichpage.innerHTML = 'Page: ' + Number(page + 1);
+			for(let i = 0; i < data.length; i++){
+				const card = document.createElement('div');
+				card.classList.add('card');
+				const thumb = document.createElement('img');
+				const name = document.createElement('h4');
+				const price = document.createElement('p');
+				const metacritic = document.createElement('p');
+				const steam = document.createElement('p');
+				thumb.src = data[i].thumb;
+				name.innerHTML = data[i].title;
+				price.innerHTML = data[i].salePrice + '&nbsp&nbsp' + '<del>' + data[i].normalPrice + '<del>';
+				metacritic.innerHTML = "<div class='metacritic'><img src='metacritic-logo.png'>" + `<a href='https://metacritic.com${data[i].metacriticLink}'>` + data[i].metacriticScore; + '</a></div>';
+				steam.innerHTML = "<div class='steam'><img src='steam-logo.png' width='16'>" + `<a href='https://store.steampowered.com/app/${data[i].steamAppID}'>` + data[i].steamRatingCount + ` (${data[i].steamRatingPercent}% ▲)` + '</a></div>';
+				flex.appendChild(card);
+				card.append(thumb, name, price, metacritic, steam);
+			}
+		});
+	}
+	getDeals();
+</script>
+</body>
+</html>

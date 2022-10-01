@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+	font-family: 'Nunito', sans-serif;
+	background-color: #090907;
+	color: #090907;
+	margin: 0;
+}
+
+h1,h2{
+	margin: 0;
+}
+
+.dv-header{
+	font-family: 'Poppins', sans-serif;
+	width: 100%;
+	padding: 1rem 2rem;
+	box-sizing: border-box;
+	background-color: #c47f06;
+	color: #f2f6f7;
+	position: sticky;
+	top: 0;
+}
+
+header{
+	position: relative;
+}
+
+a{
+	text-decoration: none;
+	font-family: 'Nunito', sans-serif;
+	transition: .2s;
+	text-underline-offset: 0.5rem;
+}
+
+header a:hover, header #lnk-active{
+	text-decoration: underline;
+	text-decoration-thickness: 3px;
+}
+
+header #h-links{
+	position: absolute;
+	top: 4px;
+	left: 150px;
+}
+
+header a{
+	color: #f2f6f7;
+	margin: 0 0.3rem;
+}
+
+header #h-input{
+	position: absolute;
+	top: 4px;
+	right: 0;
+}
+
+input, button{
+	font-family: 'PT Sans', sans-serif;
+	background-color: #f2f6f7;
+	color: #090907;
+	font-size: 15px;
+	padding: 8px 16px;
+	border-radius: 4px;
+	outline: none;
+	border: none;
+	transition: .2s ease;
+}
+
+button{
+	background-color: #27ae60;
+	color: #f2f6f7;
+	cursor: pointer;
+}
+
+input:hover, button:hover{
+	transform: scale(1.04);
+}
+
+.content #c-imgbg{
+	background-image: url('PUBG-Background.jpg');
+	background-repeat: no-repeat;
+	min-height: 500px;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+p{
+	margin: 6px 0;
+	font-weight: bold;
+}
+
+#c-imgbg #i-input{
+	margin-top: 2rem;
+	text-align: center;
+}
+
+#i-input input, #i-input button{
+	transform: none;
+	font-size: 18px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+footer{
+	background-color: #090907;
+	color: #f2f6f7;
+	text-align: center;
+	padding: 24px 0;
+}
+
+footer p{
+	font-size: 14px;
+}
+
+.bottom{
+	width: 100%;
+	background-image: url('PUBG-Background.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+#stats{
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 auto;
+}
+
+#stats #h3{
+	background-color: #161616;
+	color: #f2f6f7;
+	padding: 0.5rem;
+	border-radius: 6px;
+	width: 95%;
+	margin: 0 auto;
+}
+
+.dv-grid{
+	display: grid;
+	grid-template-columns: auto auto;
+	margin: 0 auto;
+}
+
+.dv-grid div{
+	background-color: #bdc3c7;
+	margin: 1rem;
+	border-radius: 6px;
+	padding: 1rem;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+h3{
+	margin: 6px 0;
+}
+
+hr{
+	width: 200px;
+	margin-right: 60%;
+	border-color: black;
+}
+
+@media only screen and (max-width: 800px){
+	header #h-input{
+		display: none;
+	}
+	#i-input input{
+		width: 240px;
+	}
+
+	.dv-grid{
+		display: block;
+	}
+
+	.dv-grid div{
+		width: 100%;
+		margin: 1rem 0;
+		box-sizing: border-box;
+	}
+}
+
+#stats p{
+	font-size: 15px;
+}
+
+#ldboard{
+	display: none;
+	min-height: 70vh;
+	text-align: center;
+	color: #f2f6f7;
+}
+
+#ldbtext{
+	padding: 1rem 0;
+}
+
+table{
+	width: 100%;
+	margin: 1rem auto;
+	font-family: 'PT Sans', sans-serif;
+  	border-collapse: collapse;
+  	background-color: #222;
+  	color: #ddd;
+}
+
+td, th {
+	text-align: left;
+	padding: 10px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+tr:nth-child(even) {
+	background-color: #111;
+}

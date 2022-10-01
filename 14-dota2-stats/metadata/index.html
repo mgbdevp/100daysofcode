@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.6">
+	<title>Dota2 Metadata</title>
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+		.content{text-align: center;}
+		table{border-spacing: 0 0.4rem;width: 70%;text-align: left;border-collapse: collapse;color: #ccc;}
+		tr:nth-child(even) {background-color: #1e2329}
+		#table td{width: 100px;}
+		td, th{border: 1px solid #666; text-align: left;padding: 8px;}
+		@media only screen and (max-width: 900px){table{width: 100% !important}}
+		a{color: orange;text-decoration: none;}
+	</style>
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<div>
+				<img src="dota2-logo.jpg">
+				<h2>Dota2 Stats</h2>
+			</div>
+		</div>
+		<div class="content">
+			<p><a href="#status">Status</a> | <a href="#heroes">Heroes</a> | <a href="#leagues">Leagues</a> | <a href="#teams">Teams</a> | </p>
+			<h3 id="status">Status</h3>
+			<table id="table">
+				<tr>
+					<th>Name</th>
+					<th>Integer</th>
+				</tr>
+			</table>
+			<h3 id="heroes">Heroes</h3>
+			<table id="t_heroes">
+				<tr>
+					<th>Name</th>
+					<th>Legs</th>
+					<th>Attack Type</th>
+					<th>Roles</th>
+				</tr>
+			</table>
+			<h3 id="leagues">Leagues</h3>
+			<table id="t_leagues">
+				<tr>
+					<th>Name</th>
+					<th>Tier</th>
+				</tr>
+			</table>
+			<h3 id="teams">Teams</h3>
+			<table id="t_teams">
+				<tr>
+					<th>Rating</th>
+					<th>Name</th>
+					<th>Tag</th>
+					<th>Wins</th>
+					<th>Losses</th>
+				</tr>
+			</table>
+		</div>
+		<footer id="footer">
+			<h3>Dota2 Stats</h3>
+			<p>MAGABEE &copy2022</p>
+			<p>Made with opendota.com Dota 2 API</p>
+		</footer>
+	</main>
+<script>
+	const content = document.querySelector('.content');
+	const table = document.getElementById('table');
+	const t_heroes = document.getElementById('t_heroes');
+
+	function status(){
+		fetch('https://api.opendota.com/api/status')
+		.then(res => res.json())
+		.then(data => {
+			const foreach = Object.keys(data);
+			for(let i = 0; i < foreach.length - 6; i++){
+				const ntr = document.createElement('tr');
+				const name = document.createElement('td')
+				const integer = document.createElement('td');
+
+				name.innerHTML = foreach[i].split('_').join(' ');
+				integer.innerHTML = Object.values(data)[i];
+
+				table.appendChild(ntr);
+				ntr.append(name, integer);
+			}
+		});
+	}
+	status();
+
+	function heroes(){
+		fetch('https://api.opendota.com/api/heroes')
+		.then(res => res.json())
+		.then(data => {
+			for(let i = 0; i < data.length; i++){
+				const ntr = document.createElement('tr');
+				const name = document.createElement('td')
+				const legs = document.createElement('td');
+				const attacktype = document.createElement('td');
+				const roles = document.createElement('td');
+
+				name.innerHTML = data[i].localized_name;
+				legs.innerHTML = data[i].legs;
+				attacktype.innerHTML = data[i].attack_type;
+				for(let ii = 0; ii < data[i].roles.length; ii++){
+					roles.innerHTML += data[i].roles[ii] + ', ';
+				}
+				
+				t_heroes.appendChild(ntr);
+				ntr.append(name, legs, attacktype, roles);
+			}
+		});
+	}
+	heroes();
+
+	function leagues(){
+		fetch('https://api.opendota.com/api/leagues')
+		.then(res => res.json())
+		.then(data => {
+			for(let i = 0; i < data.length; i++){
+				const ntr = document.createElement('tr');
+				const name = document.createElement('td')
+				const tier = document.createElement('td');
+
+				name.innerHTML = data[i].name;
+				tier.innerHTML = data[i].tier;
+				
+				t_leagues.appendChild(ntr);
+				ntr.append(name, tier);
+			}
+		});
+	}
+	leagues();
+
+	function teams(){
+		fetch('https://api.opendota.com/api/teams')
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			for(let i = 0; i < data.length; i++){
+				const ntr = document.createElement('tr');
+				const rating = document.createElement('td')
+				const name = document.createElement('td');
+				const tag = document.createElement('td');
+				const wins = document.createElement('td');
+				const losses = document.createElement('td');
+
+				rating.innerHTML = data[i].rating;
+				name.innerHTML = data[i].name;
+				tag.innerHTML = data[i].tag;
+				wins.innerHTML = data[i].wins;
+				losses.innerHTML = data[i].losses;
+				
+				t_teams.appendChild(ntr);
+				ntr.append(rating, name, tag, wins, losses);
+			}
+		});
+	}
+	teams();
+</script>
+</body>
+</html>

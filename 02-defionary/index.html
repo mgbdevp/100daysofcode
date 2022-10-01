@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Defionary</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+	<main>
+		<div class="nav">
+			<img src="defionary-logo.png" width="150">
+		</div>
+		<div class="search">
+			<input type="text" id="word" placeholder="e.g. water">
+			<button onclick="getDef()">get</button>
+		</div>
+		<div class="content">
+		</div>
+		<div class="about">
+			<h3>Defionary</h3>
+			<p>magabee - dictionaryapi.dev &copy 2022</p>
+			<p>this app uses 3rd party api of dictionaryapi. data doesn't belong to us.</p>
+		</div>
+	</main>
+<script>
+	const content = document.querySelector('.content');
+	const word = document.getElementById('word');
+	function getDef(){
+		content.innerHTML = '';
+		fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word.value}`)
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			const phonetic = document.createElement('h3');
+			const audio = document.createElement('audio');
+			const audiosource = document.createElement('source');
+			const antonymstx = document.createElement('p');
+			const antonyms = document.createElement('p');
+			const synonymstx = document.createElement('p');
+			const synonyms = document.createElement('p');
+			const defsdv = document.createElement('div');
+			defsdv.style.margin = '32px 0';
+			audio.controls = true;
+			for(let i = 0; i < data[0].phonetics.length; i++){
+				if(data[0].phonetics[i].audio != ''){
+					phonetic.innerHTML = data[0].phonetics[i].text + '<br>' + '<small>' + data[0].meanings[0].partOfSpeech + '</small>';
+					audiosource.src = data[0].phonetics[i].audio;
+				}
+			}
+			antonymstx.innerHTML = 'antonyms: ';
+			for(let i = 0; i < data[0].meanings[0].antonyms.length; i++){
+				antonyms.innerHTML += data[0].meanings[0].antonyms[i] + ', ';
+			}
+			synonymstx.innerHTML = 'synonyms: ';
+			for(let i = 0; i < data[0].meanings[0].synonyms.length; i++){
+				synonyms.innerHTML += data[0].meanings[0].synonyms[i] + ', ';
+			}
+			content.append(phonetic, audio, antonymstx, antonyms, synonymstx, synonyms, defsdv);
+			audio.appendChild(audiosource);
+			
+			for(let i = 0; i < data[0].meanings[0].definitions.length; i++){
+				const newDefiniton = document.createElement('p');
+				newDefiniton.innerHTML = `definiton ${i}: <br>` + data[0].meanings[0].definitions[i].definition;
+				defsdv.appendChild(newDefiniton);
+			}
+		});	
+	}
+</script>
+</body>
+</html>

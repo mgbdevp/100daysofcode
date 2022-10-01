@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GenshinImpactData</title>
+	<style>
+		body{font-family: 'Calibri', sans-serif;background-color: #121212;color: #ddd;}
+		.header{text-align: center;}
+		div{margin: 0 auto;width: 80%;}
+		p{margin-left: 1rem;line-height: 80%;font-size: 14px;}
+	</style>
+</head>
+<body>
+	<main>
+		<div class="header">
+			<h2>Genshin Impact Data</h2>
+		</div>
+		<div id="artifacts">
+			<h3>Artifacts</h3>
+		</div>
+		<div id="boss">
+			<h3>Boss</h3>
+		</div>
+		<div id="characters">
+			<h3>Characters</h3>
+		</div>
+		<div id="consumables">
+			<h3>Consumables</h3>
+		</div>
+		<div id="domains">
+			<h3>Domains</h3>
+		</div>
+		<div id="elements">
+			<h3>Elements</h3>
+		</div>
+		<div id="enemies">
+			<h3>Enemies</h3>
+		</div>
+		<div id="materials">
+			<h3>Materials</h3>
+		</div>
+		<div id="nations">
+			<h3>Nations</h3>
+		</div>
+		<div id="weapons">
+			<h3>Weapons</h3>
+		</div>
+	</main>
+<script>
+	const artifacts = document.getElementById('artifacts');
+	const boss = document.getElementById('boss');
+	const characters = document.getElementById('characters');
+	const consumables = document.getElementById('consumables');
+	const domains = document.getElementById('domains');
+	const elements = document.getElementById('elements');
+	const enemies = document.getElementById('enemies');
+	const materials = document.getElementById('materials');
+	const nations = document.getElementById('nations');
+	const weapons = document.getElementById('weapons');
+
+	fetch('https://api.genshin.dev/artifacts')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.length; i++){
+			const element = document.createElement('p');
+			element.innerHTML = data[i];
+			artifacts.appendChild(element);
+		}
+	});
+	fetch('https://api.genshin.dev/boss')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.length; i++){
+			const element = document.createElement('p');
+			element.innerHTML = data[i];
+			boss.appendChild(element);
+		}
+	});
+	fetch('https://api.genshin.dev/characters')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.length; i++){
+			const element = document.createElement('p');
+			element.innerHTML = data[i];
+			characters.appendChild(element);
+		}
+	});
+	fetch('https://api.genshin.dev/consumables')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.length; i++){
+			const element = document.createElement('p');
+			element.innerHTML = data[i];
+			consumables.appendChild(element);
+		}
+	});
+	fetch('https://api.genshin.dev/domains')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.length; i++){
+			const element = document.createElement('p');
+			element.innerHTML = data[i];
+			domains.appendChild(element);
+		}
+	});
+	fetch('https://api.genshin.dev/elements')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.length; i++){
+			const element = document.createElement('p');
+			element.innerHTML = data[i];
+			elements.appendChild(element);
+		}
+	});
+	fetch('https://api.genshin.dev/enemies')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.length; i++){
+			const element = document.createElement('p');
+			element.innerHTML = data[i];
+			enemies.appendChild(element);
+		}
+	});
+	fetch('https://api.genshin.dev/materials')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.length; i++){
+			const element = document.createElement('p');
+			element.innerHTML = data[i];
+			nations.appendChild(element);
+		}
+	});
+	fetch('https://api.genshin.dev/nations')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.length; i++){
+			const element = document.createElement('p');
+			element.innerHTML = data[i];
+			nations.appendChild(element);
+		}
+	});
+	fetch('https://api.genshin.dev/weapons')
+	.then(res => res.json())
+	.then(data => {
+		for(let i = 0; i < data.length; i++){
+			const element = document.createElement('p');
+			element.innerHTML = data[i];
+			weapons.appendChild(element);
+		}
+	});
+	
+</script>
+</body>
+</html>
